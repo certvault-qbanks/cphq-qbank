@@ -1,0 +1,487 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CPHQ Health Data Analytics: Control Charts, Statistics and Measures Made Simple | CPHQ Qbank</title><meta name="description" content="Health Data Analytics is 26 CPHQ items and the category candidates find hardest. Work through measures, statistics and control charts with interactive tools."><link rel="canonical" href="https://cphqquestionbank.com/blog-cphq-health-data-analytics.html">
+<meta property="og:type" content="article"><meta property="og:url" content="https://cphqquestionbank.com/blog-cphq-health-data-analytics.html"><meta property="og:title" content="CPHQ Health Data Analytics: Control Charts, Statistics and Measures Made Simple"><meta property="og:description" content="Health Data Analytics is 26 CPHQ items and the category candidates find hardest. Work through measures, statistics and control charts with interactive tools."><meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;600;700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>:root{--fg:rgba(15,35,65,1);--bg:#fff;--main-fg:rgba(225,235,250,1);--main-bg:rgba(25,65,120,1);--promo-fg:rgba(25,65,120,1);--promo-bg:rgba(225,235,250,1);--sec-bg:rgba(190,210,240,1);--btn-fg:#fff;--btn-bg:rgba(25,65,120,1);--accent:rgba(40,90,170,1);--line:rgba(15,35,65,.12);--soft:rgba(15,35,65,.66);--tint:#f4f7fc;--ok:#15803d;--ok-bg:#e8f6ee;--bad:#b42318;--bad-bg:#fdecea;--warn:#9a5b00;--warn-bg:#fff5e0;--r:8px;--font-h:'Exo',sans-serif;--font-b:'Open Sans',sans-serif;--header-h:72px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 16px)}
+body{font-family:var(--font-b);color:var(--fg);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%}
+button,input,select{font-family:inherit;font-size:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+/* header (matches index.html) */
+.header{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--header-h);background:rgba(255,255,255,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.06)}
+.header__inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:100%}
+.header__logo{font-family:var(--font-h);font-weight:700;font-size:1.75rem;line-height:1}
+.nav{display:flex;align-items:center;gap:4px}
+.nav a{padding:8px 16px;font-size:.95rem;font-weight:600;border-radius:6px;transition:background .2s}
+.nav a:hover{background:rgba(0,0,0,.05)}
+.nav a.is-current{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 30px;font-weight:700;font-size:1rem;border-radius:var(--r);border:none;cursor:pointer;transition:box-shadow .2s,transform .2s}
+.btn--primary{background:var(--btn-bg);color:var(--btn-fg)!important;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.btn--primary:hover{box-shadow:0 6px 24px rgba(0,0,0,.2);transform:translateY(-1px)}
+.btn--light{background:#fff;color:var(--fg)!important}
+.btn--ghost{background:transparent;border:2px solid var(--line);color:var(--fg)}
+.btn--sm{padding:10px 20px;font-size:.9rem}
+.nav .btn{margin-left:10px}
+.hamburger{display:none;background:none;border:none;cursor:pointer;width:44px;height:44px;position:relative;z-index:600}
+.hamburger span{display:block;width:24px;height:2px;background:var(--fg);border-radius:2px;position:absolute;left:10px;transition:all .3s}
+.hamburger span:nth-child(1){top:14px}.hamburger span:nth-child(2){top:21px}.hamburger span:nth-child(3){top:28px}
+.hamburger.open span:nth-child(1){top:21px;transform:rotate(45deg)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){top:21px;transform:rotate(-45deg)}
+.mobile-drawer{position:fixed;top:0;right:0;bottom:0;width:300px;max-width:85vw;background:#fff;z-index:550;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);box-shadow:-8px 0 40px rgba(0,0,0,.15);padding:calc(var(--header-h) + 20px) 28px 28px;display:flex;flex-direction:column;gap:4px}
+.mobile-drawer.open{transform:none}
+.mobile-drawer a{padding:14px 16px;font-size:1.05rem;font-weight:600;border-radius:var(--r)}
+.mobile-drawer .btn{margin-top:12px}
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:540;opacity:0;pointer-events:none;transition:opacity .3s}
+.drawer-overlay.open{opacity:1;pointer-events:auto}
+@media(max-width:860px){.nav{display:none}.hamburger{display:block}.header__logo{font-size:1.35rem}}
+.spacer{height:var(--header-h)}
+.progress{position:fixed;top:var(--header-h);left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),#4f9be8);z-index:501}
+
+/* article hero */
+.a-hero{background:linear-gradient(135deg,var(--main-bg) 0%,var(--accent) 100%);color:var(--main-fg);padding:48px 24px 56px}
+.a-hero__inner{max-width:1140px;margin:0 auto}
+.crumbs{font-size:.88rem;opacity:.75;margin-bottom:22px}
+.crumbs a:hover{text-decoration:underline}
+.a-tag{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.8rem;font-weight:700;padding:5px 14px;border-radius:100px;margin-bottom:18px}
+.a-hero h1{font-family:var(--font-h);font-weight:700;font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.12;letter-spacing:-.02em;color:#fff;max-width:860px}
+.a-dek{font-size:1.2rem;line-height:1.6;opacity:.85;max-width:720px;margin-top:18px}
+.a-meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;font-size:.9rem;opacity:.8}
+.a-meta span{display:inline-flex;align-items:center;gap:6px}
+.a-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.2);border-radius:12px;overflow:hidden;margin-top:36px;max-width:860px}
+.a-facts div{background:rgba(15,40,85,.55);padding:18px 20px}
+.a-facts b{display:block;font-family:var(--font-h);font-size:1.7rem;color:#fff;line-height:1.1}
+.a-facts small{font-size:.85rem;opacity:.8}
+@media(max-width:700px){.a-facts{grid-template-columns:repeat(2,1fr)}}
+
+/* layout */
+.a-layout{max-width:1140px;margin:0 auto;padding:48px 24px 24px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:56px;align-items:start}
+.a-layout>main{min-width:0}
+.toc{position:sticky;top:calc(var(--header-h) + 28px);font-size:.9rem}
+.toc__title{font-family:var(--font-h);font-weight:700;font-size:1rem;margin-bottom:12px}
+.toc ol{list-style:none;border-left:2px solid var(--line)}
+.toc a{display:block;padding:6px 0 6px 14px;margin-left:-2px;border-left:2px solid transparent;color:var(--soft);line-height:1.4}
+.toc a:hover{color:var(--fg)}
+.toc a.active{border-left-color:var(--accent);color:var(--accent);font-weight:700}
+.toc__cta{margin-top:24px;padding:18px;border-radius:12px;background:var(--promo-bg)}
+.toc__cta p{font-size:.88rem;line-height:1.5;margin-bottom:12px}
+.toc-mobile{display:none}
+@media(max-width:960px){.a-layout{grid-template-columns:minmax(0,1fr);gap:0;padding-top:28px}.toc{display:none}.toc-mobile{display:block;border:1px solid var(--line);border-radius:12px;margin-bottom:28px}.toc-mobile summary{padding:14px 18px;font-weight:700;cursor:pointer}.toc-mobile ol{padding:0 18px 16px 38px}.toc-mobile li{padding:4px 0}}
+
+/* prose */
+.prose{max-width:720px;font-size:1.075rem;line-height:1.78}
+.prose>*+*{margin-top:1.1em}
+.prose h2{font-family:var(--font-h);font-weight:700;font-size:clamp(1.6rem,3vw,2.05rem);line-height:1.2;letter-spacing:-.01em;margin-top:2.4em}
+.prose h2:first-child{margin-top:0}
+.prose h3{font-family:var(--font-h);font-weight:600;font-size:1.3rem;line-height:1.3;margin-top:1.8em}
+.prose ul,.prose ol{padding-left:1.3em}
+.prose li+li{margin-top:.4em}
+.prose li::marker{color:var(--accent)}
+.prose a:not(.btn){color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.prose strong{font-weight:700}
+.lead{font-size:1.22rem;line-height:1.7}
+.src{font-size:.85rem;color:var(--soft)}
+
+/* callouts */
+.callout{border-left:4px solid var(--accent);background:var(--tint);border-radius:0 12px 12px 0;padding:18px 22px}
+.callout__t{font-family:var(--font-h);font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.callout--trap{border-color:#d97706;background:var(--warn-bg)}
+.callout--ok{border-color:var(--ok);background:var(--ok-bg)}
+.callout p{margin:0}
+
+/* bar chart */
+.bars{border:1px solid var(--line);border-radius:14px;padding:22px 22px 14px}
+.bars__h{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:16px;flex-wrap:wrap}
+.bars__h strong{font-family:var(--font-h);font-size:1.1rem}
+.bar{display:grid;grid-template-columns:minmax(0,210px) 1fr 58px;gap:12px;align-items:center;padding:7px 0;font-size:.93rem;line-height:1.3}
+.bar__track{height:14px;background:var(--tint);border-radius:7px;overflow:hidden}
+.bar__fill{height:100%;background:var(--accent);border-radius:7px;width:var(--w)}
+.bar__fill--hi{background:var(--main-bg)}
+.bar__v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+@media(max-width:560px){.bar{grid-template-columns:1fr 50px}.bar__track{grid-column:1/-1;grid-row:2}}
+
+/* stacked bar */
+.stack{display:flex;height:46px;border-radius:10px;overflow:hidden;font-weight:700;font-size:.9rem;color:#fff}
+.stack>div{display:flex;align-items:center;justify-content:center;flex:var(--w)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.9rem;margin-top:10px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+/* tool widget */
+.tool{border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 2px 0 var(--line)}
+.tool__head{background:var(--main-bg);color:#fff;padding:14px 22px;display:flex;align-items:center;gap:10px}
+.tool__head b{font-family:var(--font-h);font-size:1.08rem}
+.tool__head span{font-size:.85rem;opacity:.75;margin-left:auto}
+.tool__body{padding:22px}
+.tool__body>*+*{margin-top:16px}
+.field{display:grid;gap:6px}
+.field label,.flabel{font-weight:700;font-size:.92rem}
+.field input[type=number],.field select{padding:11px 12px;border:1.5px solid var(--line);border-radius:8px;background:#fff;width:100%}
+.field input[type=range]{width:100%;accent-color:var(--accent)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:600px){.grid2,.grid3{grid-template-columns:1fr}}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button,.chip{padding:9px 16px;border:1.5px solid var(--line);border-radius:100px;background:#fff;cursor:pointer;font-weight:600;font-size:.92rem;transition:background .15s,border-color .15s}
+.seg button:hover,.chip:hover{border-color:var(--accent)}
+.seg button[aria-pressed=true],.chip.on{background:var(--main-bg);border-color:var(--main-bg);color:#fff}
+.out{background:var(--tint);border-radius:12px;padding:18px}
+.out__big{font-family:var(--font-h);font-weight:700;font-size:2.1rem;line-height:1.1}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px}
+.kpi b{display:block;font-family:var(--font-h);font-size:1.5rem;line-height:1.15}
+.kpi small{color:var(--soft);font-size:.82rem}
+.muted{color:var(--soft);font-size:.9rem}
+
+/* tables */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:.95rem;line-height:1.5}
+th,td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:var(--tint);font-family:var(--font-h);font-weight:700;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+
+/* practice question */
+.pq{border:1.5px solid var(--line);border-radius:16px;padding:22px;background:#fff}
+.pq__top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px;font-size:.85rem;color:var(--soft);font-weight:600}
+.pq__dom{background:var(--promo-bg);color:var(--promo-fg);padding:3px 10px;border-radius:100px}
+.pq__stem{font-weight:600;line-height:1.6}
+.pq__opts{display:grid;gap:8px;margin-top:14px}
+.pq__opt{display:flex;gap:12px;align-items:flex-start;text-align:left;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;line-height:1.5;transition:border-color .15s,background .15s}
+.pq__opt:hover:not(:disabled){border-color:var(--accent);background:var(--tint)}
+.pq__opt b{flex:0 0 26px;height:26px;border-radius:50%;background:var(--tint);display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.pq__opt:disabled{cursor:default}
+.pq__opt.is-right{border-color:var(--ok);background:var(--ok-bg)}
+.pq__opt.is-right b{background:var(--ok);color:#fff}
+.pq__opt.is-wrong{border-color:var(--bad);background:var(--bad-bg)}
+.pq__opt.is-wrong b{background:var(--bad);color:#fff}
+.pq__exp{display:none;margin-top:14px;padding:14px 16px;border-radius:10px;background:var(--tint);line-height:1.65}
+.pq.answered .pq__exp{display:block}
+.pq__verdict{font-weight:700;margin-bottom:4px}
+
+/* steps (true sequences only) */
+.steps{list-style:none;padding:0!important;counter-reset:s;position:relative}
+.steps>li{position:relative;padding:0 0 22px 56px;counter-increment:s}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;background:var(--main-bg);color:#fff;font-family:var(--font-h);font-weight:700;display:flex;align-items:center;justify-content:center}
+.steps>li::after{content:'';position:absolute;left:18px;top:42px;bottom:4px;width:2px;background:var(--line)}
+.steps>li:last-child::after{display:none}
+.steps>li+li{margin-top:0}
+.steps h4{font-family:var(--font-h);font-size:1.08rem;margin-bottom:2px;padding-top:6px}
+.steps p{font-size:1rem;color:var(--soft)}
+
+/* details/accordion cards */
+.dcard{border:1px solid var(--line);border-radius:12px;background:#fff}
+.dcard+.dcard{margin-top:10px}
+.dcard summary{list-style:none;cursor:pointer;padding:16px 18px;display:flex;align-items:center;gap:14px;font-weight:700}
+.dcard summary::-webkit-details-marker{display:none}
+.dcard summary::after{content:'+';margin-left:auto;font-size:1.4rem;line-height:1;color:var(--accent);transition:transform .2s}
+.dcard[open] summary::after{transform:rotate(45deg)}
+.dcard__n{flex:0 0 auto;min-width:46px;text-align:center;padding:4px 8px;border-radius:8px;background:var(--promo-bg);color:var(--promo-fg);font-size:.85rem}
+.dcard__body{padding:0 18px 18px;font-size:1rem}
+.dcard__body>*+*{margin-top:.7em}
+
+/* flip / tile grid */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.tile{border:1.5px solid var(--line);border-radius:12px;padding:16px;background:#fff;cursor:pointer;text-align:left;min-height:120px;display:flex;flex-direction:column;gap:6px;transition:border-color .15s,background .15s}
+.tile:hover{border-color:var(--accent)}
+.tile__k{font-family:var(--font-h);font-weight:700;font-size:1.6rem;line-height:1;color:var(--accent)}
+.tile__t{font-weight:700}
+.tile__d{font-size:.88rem;color:var(--soft);display:none;line-height:1.45}
+.tile.on{background:var(--tint);border-color:var(--accent)}
+.tile.on .tile__d{display:block}
+
+/* checklist */
+.check{list-style:none;padding:0!important}
+.check li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check li+li{margin-top:0}
+.check input{width:20px;height:20px;margin-top:4px;accent-color:var(--ok);flex:0 0 auto}
+.check label{cursor:pointer}
+.meter{height:10px;background:var(--tint);border-radius:5px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+
+/* inline cta */
+.cta-inline{background:var(--main-bg);color:var(--main-fg);border-radius:16px;padding:28px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
+.cta-inline h3{font-family:var(--font-h);color:#fff;font-size:1.35rem;margin:0 0 4px!important}
+.cta-inline p{opacity:.85;font-size:1rem;margin:0}
+@media(max-width:640px){.cta-inline{grid-template-columns:1fr}}
+
+/* faq */
+.faq{border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;width:100%;padding:18px 0;background:none;border:none;cursor:pointer;text-align:left;font-weight:700;font-size:1.05rem;gap:16px}
+.faq-q:hover{color:var(--accent)}
+.faq-q svg{flex-shrink:0;width:22px;height:22px;stroke:currentColor;transition:transform .3s}
+.faq-q[aria-expanded=true] svg{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s}
+.faq-a p{padding:0 0 18px;color:var(--soft)}
+
+/* related + end cta */
+.related{max-width:1140px;margin:0 auto;padding:40px 24px 64px}
+.related h2{font-family:var(--font-h);font-size:1.6rem;margin-bottom:20px}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rel{border:1px solid var(--line);border-radius:14px;padding:22px;transition:border-color .2s}
+.rel:hover{border-color:var(--accent)}
+.rel small{color:var(--accent);font-weight:700;font-size:.8rem}
+.rel h3{font-family:var(--font-h);font-size:1.1rem;line-height:1.35;margin-top:6px}
+@media(max-width:800px){.rel-grid{grid-template-columns:1fr}}
+.cta-section{background:var(--promo-bg);padding:56px 24px;text-align:center}
+.cta-section h2{font-family:var(--font-h);font-weight:600;font-size:2rem;margin-bottom:12px}
+.cta-section p{font-size:1.1rem;opacity:.75;margin:0 auto 24px;max-width:560px}
+.footer{padding:24px;border-top:1px solid rgba(0,0,0,.06);text-align:center;font-size:.85rem;color:rgba(15,35,65,.55)}
+.footer a{text-decoration:underline}
+.disclaimer{max-width:720px;margin:0 auto;padding:0 24px 24px;font-size:.8rem;color:var(--soft);text-align:center}
+@media(min-width:861px){.mobile-drawer,.drawer-overlay{display:none}}
+</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CPHQ Health Data Analytics: Control Charts, Statistics and Measures Made Simple", "description": "Health Data Analytics is 26 CPHQ items and the category candidates find hardest. Work through measures, statistics and control charts with interactive tools.", "datePublished": "2026-03-01", "dateModified": "2026-09-16", "author": {"@type": "Organization", "name": "CPHQ Qbank"}, "publisher": {"@type": "Organization", "name": "CPHQ Qbank"}, "mainEntityOfPage": "https://cphqquestionbank.com/blog-cphq-health-data-analytics.html"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What statistics are on the CPHQ exam?", "acceptedAnswer": {"@type": "Answer", "text": "The content outline names measures of central tendency, standard deviation, correlation, regression and the t-test, plus statistical process control including common and special cause variation, control charts and trend analysis."}}, {"@type": "Question", "name": "Do I need a calculator for the CPHQ?", "acceptedAnswer": {"@type": "Answer", "text": "Expect some straightforward calculations such as rates, percentages, sensitivity and specificity. Check the current candidate handbook for what the testing platform provides."}}, {"@type": "Question", "name": "What is the difference between a run chart and a control chart?", "acceptedAnswer": {"@type": "Answer", "text": "Both plot data over time. A control chart adds statistically calculated upper and lower control limits, which let you separate common cause variation from special cause variation."}}, {"@type": "Question", "name": "When do I use a p-chart versus a u-chart?", "acceptedAnswer": {"@type": "Answer", "text": "Use a p-chart for the proportion of units with a problem (defectives), such as the percent of patients who fell. Use a u-chart for the rate of defects per unit when a unit can have more than one, such as falls per 1,000 patient days."}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cphqquestionbank.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://cphqquestionbank.com/blog.html"}, {"@type": "ListItem", "position": 3, "name": "CPHQ Health Data Analytics Made Simple", "item": "https://cphqquestionbank.com/blog-cphq-health-data-analytics.html"}]}</script></head><body><header class="header"><div class="header__inner"><a href="/" class="header__logo">CPHQ Qbank</a>
+<nav class="nav" aria-label="Main"><a href="/">Home</a><a href="/#features">Features</a><a href="/blog.html" class="is-current">Blog</a><a href="/#faq">FAQ</a><a class="btn btn--primary btn--sm" href="https://cphq-healthcare-quality.base44.app">Try Free</a></nav>
+<button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button></div></header>
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<nav class="mobile-drawer" id="mobileDrawer" aria-label="Mobile"><a href="/">Home</a><a href="/#features">Features</a><a href="/blog.html">Blog</a><a href="/#faq">FAQ</a><a class="btn btn--primary" href="https://cphq-healthcare-quality.base44.app">Try 50 Free Questions</a></nav>
+<div class="spacer"></div><div class="progress" id="progress" aria-hidden="true"></div>
+<section class="a-hero"><div class="a-hero__inner">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog.html">Blog</a> / CPHQ Health Data Analytics Made Simple</nav>
+<span class="a-tag">Domain deep dive</span><h1>CPHQ Health Data Analytics: Control Charts, Statistics and Measures Made Simple</h1><p class="a-dek">Health Data Analytics is 26 CPHQ items and the category candidates find hardest. Work through measures, statistics and control charts with interactive tools.</p>
+<div class="a-meta"><span>By the CPHQ Qbank team</span><span>11 min read</span><span>Updated September 2026</span></div>
+<div class="a-facts"><div><b>26</b><small>scored items</small></div><div><b>20.8%</b><small>of the scored exam</small></div><div><b>4</b><small>interactive tools</small></div><div><b>2</b><small>practice questions</small></div></div></div></section>
+<div class="a-layout">
+<aside class="toc" aria-label="On this page"><p class="toc__title">On this page</p><ol data-toc></ol>
+<div class="toc__cta"><p>Test yourself on every CPHQ category with 50 free questions.</p><a class="btn btn--primary btn--sm" href="https://cphq-healthcare-quality.base44.app">Try free</a></div></aside>
+<main><details class="toc-mobile"><summary>On this page</summary><ol data-toc></ol></details>
+<article class="prose"><p class="lead">Health Data Analytics carries 26 scored items, and it's the category candidates most often under-prepare. You don't need to be a statistician. You need to design a sound measure, pick the right chart and tell a real signal from noise. This guide builds each skill with a hands-on tool.</p>
+
+<h2 id="measures" data-toc="Types of measures">Types of measures</h2>
+<p>Donabedian's framework sorts measures into <strong>structure</strong> (capacity to deliver care), <strong>process</strong> (what was done) and <strong>outcome</strong> (what happened to the patient). Improvement teams add <strong>balancing measures</strong>, which watch for unintended harm elsewhere, like readmissions rising after you shorten length of stay.</p>
+<div class="tool">
+  <div class="tool__head"><b>Sort the measure</b><span id="msc">0 / 7</span></div>
+  <div class="tool__body" id="sorter"></div>
+</div>
+
+<h3>Anatomy of a well-built measure</h3>
+<div class="table-wrap"><table>
+<tr><th colspan="2">Example: timely follow-up after heart failure discharge</th></tr>
+<tr><td><strong>Numerator</strong></td><td>Patients with a follow-up visit within 7 days of discharge</td></tr>
+<tr><td><strong>Denominator</strong></td><td>Heart failure patients discharged home during the period</td></tr>
+<tr><td><strong>Exclusions</strong></td><td>Discharged to hospice, left against medical advice, transferred or died</td></tr>
+<tr><td><strong>Data source</strong></td><td>EHR discharge and scheduling records</td></tr>
+<tr><td><strong>Target and threshold</strong></td><td>Target 80%; below 65% triggers review</td></tr>
+<tr><td><strong>Frequency</strong></td><td>Monthly, displayed on a run chart</td></tr>
+</table></div>
+<div class="callout callout--trap"><p class="callout__t">Exam trap</p><p>If a rate suddenly improves, check whether the definition, exclusions or data source changed before celebrating.</p></div>
+
+<h3>Sampling methods</h3>
+<ul>
+<li><strong>Simple random:</strong> every case has an equal chance of selection.</li>
+<li><strong>Systematic:</strong> every nth case from a list, with a random start.</li>
+<li><strong>Stratified:</strong> random samples from subgroups (units, payers, age groups) so each is represented.</li>
+<li><strong>Convenience:</strong> whatever is easy to get. Fast, but prone to bias.</li>
+</ul>
+
+<h2 id="stats" data-toc="Descriptive statistics">Descriptive statistics</h2>
+<p>Mean, median and mode describe the center of your data; standard deviation and range describe spread. For skewed data like length of stay, where a few long stays pull the average up, the <strong>median</strong> is the better summary. Paste some numbers to see the difference.</p>
+<div class="tool">
+  <div class="tool__head"><b>Quick stats calculator</b><span>Separate values with commas or spaces</span></div>
+  <div class="tool__body">
+    <div class="field"><label for="nums">Length of stay (days)</label><input id="nums" type="text" value="2, 3, 3, 4, 4, 4, 5, 5, 6, 21" style="padding:11px 12px;border:1.5px solid var(--line);border-radius:8px"></div>
+    <div class="kpis" id="sout"></div>
+    <p class="muted" id="snote"></p>
+  </div>
+</div>
+
+<h3>Which statistical test?</h3>
+<div class="table-wrap"><table>
+<tr><th>Tool</th><th>Use it to</th><th>Example</th></tr>
+<tr><td>t-test</td><td>Compare the means of two groups</td><td>Average wait time before vs. after a change</td></tr>
+<tr><td>ANOVA</td><td>Compare means of three or more groups</td><td>Average LOS across four units</td></tr>
+<tr><td>Chi-square</td><td>Test association between categorical variables</td><td>Readmission (yes/no) by discharge disposition</td></tr>
+<tr><td>Correlation (r)</td><td>Measure strength and direction of a linear relationship, from −1 to +1</td><td>Nurse staffing and fall rates</td></tr>
+<tr><td>Regression</td><td>Predict an outcome from one or more variables</td><td>Predicting readmission risk</td></tr>
+</table></div>
+<p>Remember: <strong>correlation is not causation</strong>, and a p-value below 0.05 is the conventional threshold for statistical significance.</p>
+
+<div class="cta-inline"><div><h3>Practice with 500+ CPHQ questions</h3><p>Scenario-based, mapped to the NAHQ content outline, with an explanation for every answer. Your first 50 are free.</p></div><a class="btn btn--light" href="https://cphq-healthcare-quality.base44.app">Start free questions</a></div>
+
+<h2 id="spc" data-toc="Control charts">Statistical process control</h2>
+<p>Every process varies. <strong>Common cause variation</strong> is the natural, random noise built into a stable process; reacting to it (tampering) makes things worse. <strong>Special cause variation</strong> comes from something unusual and should be investigated. Control charts separate the two with a centerline and upper and lower control limits, typically set at three standard deviations.</p>
+<div class="tool">
+  <div class="tool__head"><b>Spot the signal</b><span>Pick a scenario</span></div>
+  <div class="tool__body">
+    <div class="seg" id="scen"><button type="button" data-v="stable" aria-pressed="true">Stable process</button><button type="button" data-v="out" aria-pressed="false">Point outside limits</button><button type="button" data-v="shift" aria-pressed="false">Shift</button><button type="button" data-v="trend" aria-pressed="false">Trend</button></div>
+    <svg id="cc" viewBox="0 0 640 260" role="img" aria-label="Control chart" style="width:100%;background:#fff;border:1px solid var(--line);border-radius:12px"></svg>
+    <div class="out" id="ccout"></div>
+  </div>
+</div>
+<h3>Common special cause rules</h3>
+<ul>
+<li>A single point outside a control limit.</li>
+<li>A <strong>shift</strong>: a run of consecutive points on one side of the centerline (8 is common; some rule sets use 7 or 9).</li>
+<li>A <strong>trend</strong>: 6 or more consecutive points steadily rising or falling.</li>
+<li>Two of three consecutive points near a control limit (beyond two standard deviations, same side).</li>
+</ul>
+<p class="src">Rule sets vary slightly by source. Know the concept behind each rule rather than a single number.</p>
+
+<h3>Which control chart?</h3>
+<div class="tool">
+  <div class="tool__head"><b>Control chart selector</b><span>Answer two questions</span></div>
+  <div class="tool__body">
+    <div><p class="flabel">1. What kind of data?</p><div class="seg" id="q1"><button type="button" data-v="var" aria-pressed="false">Continuous (time, weight, cost)</button><button type="button" data-v="dft" aria-pressed="false">Yes/no per unit (defectives)</button><button type="button" data-v="dct" aria-pressed="false">Count of events per unit (defects)</button></div></div>
+    <div id="q2wrap" hidden><p class="flabel" id="q2t"></p><div class="seg" id="q2"></div></div>
+    <div class="out" id="chout"><p class="muted">Choose a data type to begin.</p></div>
+  </div>
+</div>
+
+<h2 id="screening" data-toc="Sensitivity & specificity">Sensitivity, specificity and predictive values</h2>
+<p>These appear in questions about screening tools and data validation. Change the counts to see how each value moves.</p>
+<div class="tool">
+  <div class="tool__head"><b>2 × 2 table calculator</b><span>Condition present vs. test result</span></div>
+  <div class="tool__body">
+    <div class="grid2">
+      <div class="field"><label for="tp">True positives</label><input id="tp" type="number" min="0" value="90"></div>
+      <div class="field"><label for="fp">False positives</label><input id="fp" type="number" min="0" value="30"></div>
+      <div class="field"><label for="fn">False negatives</label><input id="fn" type="number" min="0" value="10"></div>
+      <div class="field"><label for="tn">True negatives</label><input id="tn" type="number" min="0" value="870"></div>
+    </div>
+    <div class="kpis" id="dout"></div>
+  </div>
+</div>
+<div class="table-wrap"><table>
+<tr><th>Measure</th><th>Formula</th><th>Answers the question</th></tr>
+<tr><td>Sensitivity</td><td>TP ÷ (TP + FN)</td><td>Of people who have it, how many test positive?</td></tr>
+<tr><td>Specificity</td><td>TN ÷ (TN + FP)</td><td>Of people who don't, how many test negative?</td></tr>
+<tr><td>PPV</td><td>TP ÷ (TP + FP)</td><td>If positive, how likely is it real?</td></tr>
+<tr><td>NPV</td><td>TN ÷ (TN + FN)</td><td>If negative, how likely is it truly negative?</td></tr>
+</table></div>
+
+<h2 id="display" data-toc="Dashboards & benchmarks">Dashboards, scorecards and benchmarks</h2>
+<p>A <strong>dashboard</strong> shows current performance on a few key measures, often with status colors, for quick monitoring. A <strong>scorecard</strong> tracks performance against targets over a longer period and is often tied to strategy. Tailor both to the audience: boards need a handful of strategic measures, while unit managers need operational detail.</p>
+<p><strong>Benchmarking</strong> compares your performance with an external reference, such as national databases or high-performing peers. Make sure the comparison group uses the same definitions and is risk-adjusted where appropriate.</p>
+
+<div class="pq" data-answer="c"><div class="pq__top"><span>Practice question</span><span class="pq__dom">Health Data Analytics</span></div><p class="pq__stem">A unit manager sees one month's hand hygiene compliance fall from 91% to 86%. The control chart shows the point is within limits and no other rule is triggered. What is the best response?</p><div class="pq__opts"><button class="pq__opt" data-k="a"><b>A</b><span>Retrain all staff on hand hygiene immediately</span></button><button class="pq__opt" data-k="b"><b>B</b><span>Change the audit tool to improve accuracy</span></button><button class="pq__opt" data-k="c"><b>C</b><span>Continue monitoring; the change reflects common cause variation</span></button><button class="pq__opt" data-k="d"><b>D</b><span>Recalculate control limits using only the latest month</span></button></div><div class="pq__exp" aria-live="polite"><p class="pq__verdict"></p><p>With no special cause signal, the drop is consistent with common cause variation. Reacting to it as if it were special (tampering) wastes resources and can increase variation. If overall performance is below goal, improving the system as a whole is a separate decision.</p></div></div>
+
+<div class="pq" data-answer="a"><div class="pq__top"><span>Practice question</span><span class="pq__dom">Health Data Analytics</span></div><p class="pq__stem">A hospital wants to track falls per 1,000 patient days. Patient days differ each month, and a single patient can fall more than once. Which control chart should be used?</p><div class="pq__opts"><button class="pq__opt" data-k="a"><b>A</b><span>u-chart</span></button><button class="pq__opt" data-k="b"><b>B</b><span>p-chart</span></button><button class="pq__opt" data-k="c"><b>C</b><span>np-chart</span></button><button class="pq__opt" data-k="d"><b>D</b><span>c-chart</span></button></div><div class="pq__exp" aria-live="polite"><p class="pq__verdict"></p><p>Falls are counts of events (defects), a patient can have more than one, and the area of opportunity (patient days) varies. That combination calls for a u-chart. A c-chart assumes a constant area of opportunity; p- and np-charts are for yes/no "defective" data.</p></div></div>
+
+
+<h2 id="faq" data-toc="FAQ">Frequently asked questions</h2><div class="faq"><div class="faq-item"><button class="faq-q"><span>What statistics are on the CPHQ exam?</span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>The content outline names measures of central tendency, standard deviation, correlation, regression and the t-test, plus statistical process control including common and special cause variation, control charts and trend analysis.</p></div></div><div class="faq-item"><button class="faq-q"><span>Do I need a calculator for the CPHQ?</span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>Expect some straightforward calculations such as rates, percentages, sensitivity and specificity. Check the current candidate handbook for what the testing platform provides.</p></div></div><div class="faq-item"><button class="faq-q"><span>What is the difference between a run chart and a control chart?</span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>Both plot data over time. A control chart adds statistically calculated upper and lower control limits, which let you separate common cause variation from special cause variation.</p></div></div><div class="faq-item"><button class="faq-q"><span>When do I use a p-chart versus a u-chart?</span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>Use a p-chart for the proportion of units with a problem (defectives), such as the percent of patients who fell. Use a u-chart for the rate of defects per unit when a unit can have more than one, such as falls per 1,000 patient days.</p></div></div></div>
+<p class="src">Figures are from NAHQ's 2024 CPHQ Detailed Content Outline (Revision 2b) and 2024 Domestic Candidate Handbook unless noted. Fees and policies change; the current handbook on nahq.org is the controlling source.</p>
+</article></main></div>
+<section class="related"><h2>Keep studying</h2><div class="rel-grid"><a class="rel" href="/blog-cphq-quality-improvement-tools.html"><small>Domain deep dive</small><h3>CPHQ Quality Improvement Tools: PDSA, Lean, Six Sigma and When to Use Each</h3></a><a class="rel" href="/blog-cphq-practice-questions.html"><small>Practice questions</small><h3>12 Free CPHQ Practice Questions with Explanations</h3></a><a class="rel" href="/blog-cphq-study-guide.html"><small>Study guide</small><h3>How to Pass the CPHQ Exam in 2026: Complete Study Guide</h3></a></div></section>
+<section class="cta-section"><h2>Ready to practice?</h2><p>500+ scenario-based questions covering every CPHQ content category. Start with 50 free, no credit card required.</p><a class="btn btn--primary" href="https://cphq-healthcare-quality.base44.app">Start 50 Free Questions</a></section>
+<footer class="footer">&copy; 2026 CPHQ Qbank &bull; <a href="/">Home</a> &bull; <a href="/blog.html">Blog</a> &bull; <a href="/Privacy_Policy.html">Privacy</a> &bull; <a href="/Terms_of_Service.html">Terms</a> &bull; <a href="mailto:support@cphqquestionbank.com">Contact</a>
+<p style="margin-top:8px">CPHQ is a registered certification of the National Association for Healthcare Quality (NAHQ). CPHQ Qbank is independent and not affiliated with or endorsed by NAHQ or HQCC.</p></footer><script>(function(){
+  var hb=document.getElementById('hamburger'),dr=document.getElementById('mobileDrawer'),ov=document.getElementById('drawerOverlay');
+  function o(){hb.classList.add('open');dr.classList.add('open');ov.classList.add('open');document.body.style.overflow='hidden'}
+  function c(){hb.classList.remove('open');dr.classList.remove('open');ov.classList.remove('open');document.body.style.overflow=''}
+  if(hb){hb.addEventListener('click',function(){dr.classList.contains('open')?c():o()});ov.addEventListener('click',c);dr.querySelectorAll('a').forEach(function(a){a.addEventListener('click',c)})}
+
+  // reading progress
+  var pb=document.getElementById('progress'),art=document.querySelector('.prose');
+  function prog(){if(!pb||!art)return;var r=art.getBoundingClientRect(),h=art.offsetHeight-window.innerHeight*.6;var p=Math.min(1,Math.max(0,-r.top/h));pb.style.width=(p*100)+'%'}
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // table of contents
+  var hs=[].slice.call(document.querySelectorAll('.prose h2[id]'));
+  var lists=document.querySelectorAll('ol[data-toc]');
+  lists.forEach(function(ol){hs.forEach(function(h){var li=document.createElement('li'),a=document.createElement('a');a.href='#'+h.id;a.textContent=h.dataset.toc||h.textContent;li.appendChild(a);ol.appendChild(li)})});
+  var links=document.querySelectorAll('.toc a');
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-20% 0px -70% 0px'});hs.forEach(function(h){io.observe(h)})}
+
+  // faq
+  document.querySelectorAll('.faq-q').forEach(function(b){b.setAttribute('aria-expanded','false');b.addEventListener('click',function(){var a=b.nextElementSibling,op=b.getAttribute('aria-expanded')==='true';document.querySelectorAll('.faq-q').forEach(function(x){x.setAttribute('aria-expanded','false');x.nextElementSibling.style.maxHeight=null});if(!op){b.setAttribute('aria-expanded','true');a.style.maxHeight=a.scrollHeight+'px'}})});
+
+  // practice questions
+  var score={right:0,done:0};
+  document.querySelectorAll('.pq').forEach(function(q){
+    var ans=q.dataset.answer;
+    q.querySelectorAll('.pq__opt').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        if(q.classList.contains('answered'))return;
+        q.classList.add('answered');
+        var ok=btn.dataset.k===ans;
+        q.querySelectorAll('.pq__opt').forEach(function(b){b.disabled=true;if(b.dataset.k===ans)b.classList.add('is-right')});
+        if(!ok)btn.classList.add('is-wrong');
+        var v=q.querySelector('.pq__verdict');if(v){v.textContent=ok?'Correct.':'Not quite. The best answer is '+ans.toUpperCase()+'.';v.style.color=ok?'var(--ok)':'var(--bad)'}
+        score.done++;if(ok)score.right++;
+        document.dispatchEvent(new CustomEvent('pq:answer',{detail:score}));
+      });
+    });
+  });
+
+  // tiles
+  document.querySelectorAll('.tile').forEach(function(t){t.setAttribute('aria-expanded','false');t.addEventListener('click',function(){var on=t.classList.toggle('on');t.setAttribute('aria-expanded',on)})});
+
+  // checklists
+  document.querySelectorAll('[data-checklist]').forEach(function(box){
+    var key='cl:'+box.dataset.checklist,inputs=box.querySelectorAll('input[type=checkbox]'),m=box.querySelector('.meter i'),lab=box.querySelector('[data-count]');
+    var saved={};try{saved=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+    inputs.forEach(function(i,n){i.checked=!!saved[n];i.addEventListener('change',upd)});
+    function upd(){var d=0,s={};inputs.forEach(function(i,n){if(i.checked){d++;s[n]=1}});if(m)m.style.width=(d/inputs.length*100)+'%';if(lab)lab.textContent=d+' of '+inputs.length+' done';try{localStorage.setItem(key,JSON.stringify(s))}catch(e){}}
+    upd();
+  });
+
+  // segmented buttons
+  document.querySelectorAll('.seg').forEach(function(s){s.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){s.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');s.dispatchEvent(new CustomEvent('seg:change',{detail:b.dataset.v}))})})});
+})();
+</script><script>
+(function(){
+/* measure sorter */
+var M=[["Registered nurse to patient ratio on a unit","s"],["Percentage of stroke patients given thrombolytics within 60 minutes of arrival","p"],["30-day mortality after heart attack","o"],["The hospital employs a certified wound care nurse","s"],["Percentage of surgical cases with a completed safety checklist","p"],["Pressure injuries per 1,000 patient days","o"],["Patient-reported pain level two weeks after surgery","o"]];
+var L={s:"Structure",p:"Process",o:"Outcome"},done=0,right=0,sb=document.getElementById('sorter');
+M.forEach(function(m){var d=document.createElement('div');d.style.cssText='border-bottom:1px solid var(--line);padding-bottom:12px';d.innerHTML='<p style="font-weight:600;margin-bottom:8px">'+m[0]+'</p><div class="seg"><button type="button" data-v="s">Structure</button><button type="button" data-v="p">Process</button><button type="button" data-v="o">Outcome</button></div><p class="muted" style="margin-top:6px" hidden></p>';sb.appendChild(d);
+ var bs=d.querySelectorAll('button'),fb=d.querySelector('p.muted');
+ bs.forEach(function(b){b.onclick=function(){if(d.dataset.done)return;d.dataset.done=1;done++;var ok=b.dataset.v===m[1];if(ok)right++;
+  bs.forEach(function(x){x.disabled=true;if(x.dataset.v===m[1]){x.style.background='var(--ok)';x.style.borderColor='var(--ok)';x.style.color='#fff'}});
+  if(!ok){b.style.background='var(--bad)';b.style.borderColor='var(--bad)';b.style.color='#fff'}
+  fb.hidden=false;fb.textContent=(ok?'Correct: ':'It\'s ')+L[m[1]]+'.';document.getElementById('msc').textContent=right+' correct of '+done}})});
+/* stats */
+function st(){var v=document.getElementById('nums').value.split(/[\s,;]+/).map(Number).filter(function(x){return x===x&&isFinite(x)}).sort(function(a,b){return a-b});
+ var o=document.getElementById('sout');if(v.length<2){o.innerHTML='<p class="muted">Enter at least two numbers.</p>';return}
+ var n=v.length,mean=v.reduce(function(a,b){return a+b},0)/n,med=n%2?v[(n-1)/2]:(v[n/2-1]+v[n/2])/2,c={},mx=0,mode=[];
+ v.forEach(function(x){c[x]=(c[x]||0)+1;if(c[x]>mx)mx=c[x]});for(var k in c)if(c[k]===mx)mode.push(+k);
+ var sd=Math.sqrt(v.reduce(function(a,x){return a+(x-mean)*(x-mean)},0)/(n-1));
+ var f=function(x){return (Math.round(x*100)/100).toString()};
+ o.innerHTML=[["n",n],["Mean",f(mean)],["Median",f(med)],["Mode",mx>1?mode.join(', '):'none'],["Std. deviation",f(sd)],["Range",f(v[n-1]-v[0])]].map(function(r){return '<div class="kpi"><b>'+r[1]+'</b><small>'+r[0]+'</small></div>'}).join('');
+ document.getElementById('snote').textContent=Math.abs(mean-med)>0.2*Math.max(1,Math.abs(med))?'The mean and median differ noticeably, a sign of skew. The median better represents a typical value here.':'Mean and median are close, so the data look fairly symmetric.'}
+document.getElementById('nums').oninput=st;st();
+/* control chart */
+var base=[12,14,11,13,15,12,13,14,12,11,13,15,14,12,13,12,14,13,11,13,12,14,13,12];
+var sets={stable:base.slice(),out:base.slice(),shift:base.slice(),trend:base.slice()};
+sets.out[17]=20.5;
+[14,15,16,17,18,19,20,21].forEach(function(i,j){sets.shift[i]=[15,14.6,15.4,14.8,16,15.2,14.4,15.6][j]});
+[13,14,15,16,17,18].forEach(function(i,j){sets.trend[i]=[10.4,11.4,12.6,13.8,15,16.2][j]});
+var mean=13,sd=1.5,ucl=mean+3*sd,lcl=mean-3*sd;
+function y(v){return 220-(v-7)/(21-7)*200}
+function draw(k){var d=sets[k],X=function(i){return 50+i*(560/(d.length-1))},flag={},msg='';
+ d.forEach(function(v,i){if(v>ucl||v<lcl)flag[i]=1});
+ for(var i=0;i+8<=d.length;i++){var s=d.slice(i,i+8);if(s.every(function(v){return v>mean})||s.every(function(v){return v<mean}))for(var j=i;j<i+8;j++)flag[j]=1}
+ for(i=0;i+6<=d.length;i++){var up=true,dn=true;for(j=i+1;j<i+6;j++){if(!(d[j]>d[j-1]))up=false;if(!(d[j]<d[j-1]))dn=false}if(up||dn)for(j=i;j<i+6;j++)flag[j]=1}
+ var s='<g font-family="Open Sans" font-size="11" fill="rgba(15,35,65,.66)">';
+ s+='<line x1="50" x2="610" y1="'+y(ucl)+'" y2="'+y(ucl)+'" stroke="#b42318" stroke-dasharray="6 4"/><text x="612" y="'+(y(ucl)+4)+'">UCL</text>';
+ s+='<line x1="50" x2="610" y1="'+y(mean)+'" y2="'+y(mean)+'" stroke="rgba(15,35,65,.5)"/><text x="612" y="'+(y(mean)+4)+'">CL</text>';
+ s+='<line x1="50" x2="610" y1="'+y(lcl)+'" y2="'+y(lcl)+'" stroke="#b42318" stroke-dasharray="6 4"/><text x="612" y="'+(y(lcl)+4)+'">LCL</text>';
+ s+='<text x="50" y="245">Month 1</text><text x="610" y="245" text-anchor="end">Month 24</text></g>';
+ s+='<polyline fill="none" stroke="rgba(40,90,170,1)" stroke-width="2" points="'+d.map(function(v,i){return X(i)+','+y(v)}).join(' ')+'"/>';
+ d.forEach(function(v,i){s+='<circle cx="'+X(i)+'" cy="'+y(v)+'" r="'+(flag[i]?6:4)+'" fill="'+(flag[i]?'#b42318':'rgba(25,65,120,1)')+'"/>'});
+ document.getElementById('cc').innerHTML=s;
+ var M={stable:['Common cause only','All points fall within the limits with no runs or trends. The process is stable and predictable. If performance is not good enough, redesign the process rather than reacting to individual points.'],
+ out:['Special cause: point outside a limit','One month falls above the upper control limit. Investigate what was different that month, such as staffing, a new product or a data error.'],
+ shift:['Special cause: shift','Eight consecutive points sit above the centerline. Something has changed the process level. Find out what changed, whether or not the change was intended.'],
+ trend:['Special cause: trend','Six consecutive points rise steadily. The process is drifting. Look for a gradual change such as equipment wear or a growing workload.']};
+ document.getElementById('ccout').innerHTML='<strong>'+M[k][0]+'</strong><p style="margin-top:4px">'+M[k][1]+'</p>';}
+document.getElementById('scen').addEventListener('seg:change',function(e){draw(e.detail)});draw('stable');
+/* chart selector */
+var Q2={var:["2. How many measurements per subgroup?",[["1","One per time period"],["small","Several (about 2–10)"],["large","Many (more than 10)"]]],dft:["2. Is the sample size the same every period?",[["eq","Yes, constant"],["neq","No, it varies"]]],dct:["2. Is the area of opportunity the same every period?",[["eq","Yes, constant"],["neq","No, it varies (e.g., patient days)"]]]};
+var A={"var1":["I-MR chart (XmR)","Individual values with a moving range chart. Great for monthly data like average cost per case."],"varsmall":["X-bar and R chart","Subgroup averages plus the range within each subgroup."],"varlarge":["X-bar and S chart","Subgroup averages plus the standard deviation, better for larger subgroups."],"dfteq":["np-chart","Number of defective units when the sample size is constant."],"dftneq":["p-chart","Proportion of defective units when the sample size varies, e.g., percent of patients with a delayed antibiotic."],"dcteq":["c-chart","Count of defects per unit when the area of opportunity is constant."],"dctneq":["u-chart","Defects per unit when the area of opportunity varies, e.g., falls per 1,000 patient days."]};
+var t1=null,q2=document.getElementById('q2');
+document.getElementById('q1').addEventListener('seg:change',function(e){t1=e.detail;var q=Q2[t1];document.getElementById('q2wrap').hidden=false;document.getElementById('q2t').textContent=q[0];
+ q2.innerHTML=q[1].map(function(o){return '<button type="button" aria-pressed="false" data-v="'+o[0]+'">'+o[1]+'</button>'}).join('');
+ document.getElementById('chout').innerHTML='<p class="muted">Now answer question 2.</p>';
+ q2.querySelectorAll('button').forEach(function(b){b.onclick=function(){q2.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');var a=A[t1+b.dataset.v];document.getElementById('chout').innerHTML='<p class="muted">Use a</p><div class="out__big" style="font-size:1.6rem">'+a[0]+'</div><p style="margin-top:4px">'+a[1]+'</p>'}})});
+/* 2x2 */
+function dx(){var g=function(id){return Math.max(0,+document.getElementById(id).value||0)},tp=g('tp'),fp=g('fp'),fn=g('fn'),tn=g('tn');
+ var p=function(a,b){return b?(a/b*100).toFixed(1)+'%':'n/a'};
+ document.getElementById('dout').innerHTML=[["Sensitivity",p(tp,tp+fn)],["Specificity",p(tn,tn+fp)],["PPV",p(tp,tp+fp)],["NPV",p(tn,tn+fn)],["Accuracy",p(tp+tn,tp+tn+fp+fn)]].map(function(r){return '<div class="kpi"><b>'+r[1]+'</b><small>'+r[0]+'</small></div>'}).join('')}
+['tp','fp','fn','tn'].forEach(function(id){document.getElementById(id).oninput=dx});dx();
+})();
+</script>
+</body></html>

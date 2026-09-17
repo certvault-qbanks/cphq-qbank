@@ -1,0 +1,442 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CPHQ Quality Improvement Tools: PDSA, Lean, Six Sigma and When to Use Each | CPHQ Qbank</title><meta name="description" content="The largest CPHQ category is Performance and Process Improvement. Learn the methods and tools it names, and practice choosing the right one."><link rel="canonical" href="https://cphqquestionbank.com/blog-cphq-quality-improvement-tools.html">
+<meta property="og:type" content="article"><meta property="og:url" content="https://cphqquestionbank.com/blog-cphq-quality-improvement-tools.html"><meta property="og:title" content="CPHQ Quality Improvement Tools: PDSA, Lean, Six Sigma and When to Use Each"><meta property="og:description" content="The largest CPHQ category is Performance and Process Improvement. Learn the methods and tools it names, and practice choosing the right one."><meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;600;700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>:root{--fg:rgba(15,35,65,1);--bg:#fff;--main-fg:rgba(225,235,250,1);--main-bg:rgba(25,65,120,1);--promo-fg:rgba(25,65,120,1);--promo-bg:rgba(225,235,250,1);--sec-bg:rgba(190,210,240,1);--btn-fg:#fff;--btn-bg:rgba(25,65,120,1);--accent:rgba(40,90,170,1);--line:rgba(15,35,65,.12);--soft:rgba(15,35,65,.66);--tint:#f4f7fc;--ok:#15803d;--ok-bg:#e8f6ee;--bad:#b42318;--bad-bg:#fdecea;--warn:#9a5b00;--warn-bg:#fff5e0;--r:8px;--font-h:'Exo',sans-serif;--font-b:'Open Sans',sans-serif;--header-h:72px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 16px)}
+body{font-family:var(--font-b);color:var(--fg);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%}
+button,input,select{font-family:inherit;font-size:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+/* header (matches index.html) */
+.header{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--header-h);background:rgba(255,255,255,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.06)}
+.header__inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:100%}
+.header__logo{font-family:var(--font-h);font-weight:700;font-size:1.75rem;line-height:1}
+.nav{display:flex;align-items:center;gap:4px}
+.nav a{padding:8px 16px;font-size:.95rem;font-weight:600;border-radius:6px;transition:background .2s}
+.nav a:hover{background:rgba(0,0,0,.05)}
+.nav a.is-current{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 30px;font-weight:700;font-size:1rem;border-radius:var(--r);border:none;cursor:pointer;transition:box-shadow .2s,transform .2s}
+.btn--primary{background:var(--btn-bg);color:var(--btn-fg)!important;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.btn--primary:hover{box-shadow:0 6px 24px rgba(0,0,0,.2);transform:translateY(-1px)}
+.btn--light{background:#fff;color:var(--fg)!important}
+.btn--ghost{background:transparent;border:2px solid var(--line);color:var(--fg)}
+.btn--sm{padding:10px 20px;font-size:.9rem}
+.nav .btn{margin-left:10px}
+.hamburger{display:none;background:none;border:none;cursor:pointer;width:44px;height:44px;position:relative;z-index:600}
+.hamburger span{display:block;width:24px;height:2px;background:var(--fg);border-radius:2px;position:absolute;left:10px;transition:all .3s}
+.hamburger span:nth-child(1){top:14px}.hamburger span:nth-child(2){top:21px}.hamburger span:nth-child(3){top:28px}
+.hamburger.open span:nth-child(1){top:21px;transform:rotate(45deg)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){top:21px;transform:rotate(-45deg)}
+.mobile-drawer{position:fixed;top:0;right:0;bottom:0;width:300px;max-width:85vw;background:#fff;z-index:550;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);box-shadow:-8px 0 40px rgba(0,0,0,.15);padding:calc(var(--header-h) + 20px) 28px 28px;display:flex;flex-direction:column;gap:4px}
+.mobile-drawer.open{transform:none}
+.mobile-drawer a{padding:14px 16px;font-size:1.05rem;font-weight:600;border-radius:var(--r)}
+.mobile-drawer .btn{margin-top:12px}
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:540;opacity:0;pointer-events:none;transition:opacity .3s}
+.drawer-overlay.open{opacity:1;pointer-events:auto}
+@media(max-width:860px){.nav{display:none}.hamburger{display:block}.header__logo{font-size:1.35rem}}
+.spacer{height:var(--header-h)}
+.progress{position:fixed;top:var(--header-h);left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),#4f9be8);z-index:501}
+
+/* article hero */
+.a-hero{background:linear-gradient(135deg,var(--main-bg) 0%,var(--accent) 100%);color:var(--main-fg);padding:48px 24px 56px}
+.a-hero__inner{max-width:1140px;margin:0 auto}
+.crumbs{font-size:.88rem;opacity:.75;margin-bottom:22px}
+.crumbs a:hover{text-decoration:underline}
+.a-tag{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.8rem;font-weight:700;padding:5px 14px;border-radius:100px;margin-bottom:18px}
+.a-hero h1{font-family:var(--font-h);font-weight:700;font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.12;letter-spacing:-.02em;color:#fff;max-width:860px}
+.a-dek{font-size:1.2rem;line-height:1.6;opacity:.85;max-width:720px;margin-top:18px}
+.a-meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;font-size:.9rem;opacity:.8}
+.a-meta span{display:inline-flex;align-items:center;gap:6px}
+.a-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.2);border-radius:12px;overflow:hidden;margin-top:36px;max-width:860px}
+.a-facts div{background:rgba(15,40,85,.55);padding:18px 20px}
+.a-facts b{display:block;font-family:var(--font-h);font-size:1.7rem;color:#fff;line-height:1.1}
+.a-facts small{font-size:.85rem;opacity:.8}
+@media(max-width:700px){.a-facts{grid-template-columns:repeat(2,1fr)}}
+
+/* layout */
+.a-layout{max-width:1140px;margin:0 auto;padding:48px 24px 24px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:56px;align-items:start}
+.a-layout>main{min-width:0}
+.toc{position:sticky;top:calc(var(--header-h) + 28px);font-size:.9rem}
+.toc__title{font-family:var(--font-h);font-weight:700;font-size:1rem;margin-bottom:12px}
+.toc ol{list-style:none;border-left:2px solid var(--line)}
+.toc a{display:block;padding:6px 0 6px 14px;margin-left:-2px;border-left:2px solid transparent;color:var(--soft);line-height:1.4}
+.toc a:hover{color:var(--fg)}
+.toc a.active{border-left-color:var(--accent);color:var(--accent);font-weight:700}
+.toc__cta{margin-top:24px;padding:18px;border-radius:12px;background:var(--promo-bg)}
+.toc__cta p{font-size:.88rem;line-height:1.5;margin-bottom:12px}
+.toc-mobile{display:none}
+@media(max-width:960px){.a-layout{grid-template-columns:minmax(0,1fr);gap:0;padding-top:28px}.toc{display:none}.toc-mobile{display:block;border:1px solid var(--line);border-radius:12px;margin-bottom:28px}.toc-mobile summary{padding:14px 18px;font-weight:700;cursor:pointer}.toc-mobile ol{padding:0 18px 16px 38px}.toc-mobile li{padding:4px 0}}
+
+/* prose */
+.prose{max-width:720px;font-size:1.075rem;line-height:1.78}
+.prose>*+*{margin-top:1.1em}
+.prose h2{font-family:var(--font-h);font-weight:700;font-size:clamp(1.6rem,3vw,2.05rem);line-height:1.2;letter-spacing:-.01em;margin-top:2.4em}
+.prose h2:first-child{margin-top:0}
+.prose h3{font-family:var(--font-h);font-weight:600;font-size:1.3rem;line-height:1.3;margin-top:1.8em}
+.prose ul,.prose ol{padding-left:1.3em}
+.prose li+li{margin-top:.4em}
+.prose li::marker{color:var(--accent)}
+.prose a:not(.btn){color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.prose strong{font-weight:700}
+.lead{font-size:1.22rem;line-height:1.7}
+.src{font-size:.85rem;color:var(--soft)}
+
+/* callouts */
+.callout{border-left:4px solid var(--accent);background:var(--tint);border-radius:0 12px 12px 0;padding:18px 22px}
+.callout__t{font-family:var(--font-h);font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.callout--trap{border-color:#d97706;background:var(--warn-bg)}
+.callout--ok{border-color:var(--ok);background:var(--ok-bg)}
+.callout p{margin:0}
+
+/* bar chart */
+.bars{border:1px solid var(--line);border-radius:14px;padding:22px 22px 14px}
+.bars__h{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:16px;flex-wrap:wrap}
+.bars__h strong{font-family:var(--font-h);font-size:1.1rem}
+.bar{display:grid;grid-template-columns:minmax(0,210px) 1fr 58px;gap:12px;align-items:center;padding:7px 0;font-size:.93rem;line-height:1.3}
+.bar__track{height:14px;background:var(--tint);border-radius:7px;overflow:hidden}
+.bar__fill{height:100%;background:var(--accent);border-radius:7px;width:var(--w)}
+.bar__fill--hi{background:var(--main-bg)}
+.bar__v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+@media(max-width:560px){.bar{grid-template-columns:1fr 50px}.bar__track{grid-column:1/-1;grid-row:2}}
+
+/* stacked bar */
+.stack{display:flex;height:46px;border-radius:10px;overflow:hidden;font-weight:700;font-size:.9rem;color:#fff}
+.stack>div{display:flex;align-items:center;justify-content:center;flex:var(--w)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.9rem;margin-top:10px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+/* tool widget */
+.tool{border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 2px 0 var(--line)}
+.tool__head{background:var(--main-bg);color:#fff;padding:14px 22px;display:flex;align-items:center;gap:10px}
+.tool__head b{font-family:var(--font-h);font-size:1.08rem}
+.tool__head span{font-size:.85rem;opacity:.75;margin-left:auto}
+.tool__body{padding:22px}
+.tool__body>*+*{margin-top:16px}
+.field{display:grid;gap:6px}
+.field label,.flabel{font-weight:700;font-size:.92rem}
+.field input[type=number],.field select{padding:11px 12px;border:1.5px solid var(--line);border-radius:8px;background:#fff;width:100%}
+.field input[type=range]{width:100%;accent-color:var(--accent)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:600px){.grid2,.grid3{grid-template-columns:1fr}}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button,.chip{padding:9px 16px;border:1.5px solid var(--line);border-radius:100px;background:#fff;cursor:pointer;font-weight:600;font-size:.92rem;transition:background .15s,border-color .15s}
+.seg button:hover,.chip:hover{border-color:var(--accent)}
+.seg button[aria-pressed=true],.chip.on{background:var(--main-bg);border-color:var(--main-bg);color:#fff}
+.out{background:var(--tint);border-radius:12px;padding:18px}
+.out__big{font-family:var(--font-h);font-weight:700;font-size:2.1rem;line-height:1.1}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px}
+.kpi b{display:block;font-family:var(--font-h);font-size:1.5rem;line-height:1.15}
+.kpi small{color:var(--soft);font-size:.82rem}
+.muted{color:var(--soft);font-size:.9rem}
+
+/* tables */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:.95rem;line-height:1.5}
+th,td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:var(--tint);font-family:var(--font-h);font-weight:700;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+
+/* practice question */
+.pq{border:1.5px solid var(--line);border-radius:16px;padding:22px;background:#fff}
+.pq__top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px;font-size:.85rem;color:var(--soft);font-weight:600}
+.pq__dom{background:var(--promo-bg);color:var(--promo-fg);padding:3px 10px;border-radius:100px}
+.pq__stem{font-weight:600;line-height:1.6}
+.pq__opts{display:grid;gap:8px;margin-top:14px}
+.pq__opt{display:flex;gap:12px;align-items:flex-start;text-align:left;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;line-height:1.5;transition:border-color .15s,background .15s}
+.pq__opt:hover:not(:disabled){border-color:var(--accent);background:var(--tint)}
+.pq__opt b{flex:0 0 26px;height:26px;border-radius:50%;background:var(--tint);display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.pq__opt:disabled{cursor:default}
+.pq__opt.is-right{border-color:var(--ok);background:var(--ok-bg)}
+.pq__opt.is-right b{background:var(--ok);color:#fff}
+.pq__opt.is-wrong{border-color:var(--bad);background:var(--bad-bg)}
+.pq__opt.is-wrong b{background:var(--bad);color:#fff}
+.pq__exp{display:none;margin-top:14px;padding:14px 16px;border-radius:10px;background:var(--tint);line-height:1.65}
+.pq.answered .pq__exp{display:block}
+.pq__verdict{font-weight:700;margin-bottom:4px}
+
+/* steps (true sequences only) */
+.steps{list-style:none;padding:0!important;counter-reset:s;position:relative}
+.steps>li{position:relative;padding:0 0 22px 56px;counter-increment:s}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;background:var(--main-bg);color:#fff;font-family:var(--font-h);font-weight:700;display:flex;align-items:center;justify-content:center}
+.steps>li::after{content:'';position:absolute;left:18px;top:42px;bottom:4px;width:2px;background:var(--line)}
+.steps>li:last-child::after{display:none}
+.steps>li+li{margin-top:0}
+.steps h4{font-family:var(--font-h);font-size:1.08rem;margin-bottom:2px;padding-top:6px}
+.steps p{font-size:1rem;color:var(--soft)}
+
+/* details/accordion cards */
+.dcard{border:1px solid var(--line);border-radius:12px;background:#fff}
+.dcard+.dcard{margin-top:10px}
+.dcard summary{list-style:none;cursor:pointer;padding:16px 18px;display:flex;align-items:center;gap:14px;font-weight:700}
+.dcard summary::-webkit-details-marker{display:none}
+.dcard summary::after{content:'+';margin-left:auto;font-size:1.4rem;line-height:1;color:var(--accent);transition:transform .2s}
+.dcard[open] summary::after{transform:rotate(45deg)}
+.dcard__n{flex:0 0 auto;min-width:46px;text-align:center;padding:4px 8px;border-radius:8px;background:var(--promo-bg);color:var(--promo-fg);font-size:.85rem}
+.dcard__body{padding:0 18px 18px;font-size:1rem}
+.dcard__body>*+*{margin-top:.7em}
+
+/* flip / tile grid */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.tile{border:1.5px solid var(--line);border-radius:12px;padding:16px;background:#fff;cursor:pointer;text-align:left;min-height:120px;display:flex;flex-direction:column;gap:6px;transition:border-color .15s,background .15s}
+.tile:hover{border-color:var(--accent)}
+.tile__k{font-family:var(--font-h);font-weight:700;font-size:1.6rem;line-height:1;color:var(--accent)}
+.tile__t{font-weight:700}
+.tile__d{font-size:.88rem;color:var(--soft);display:none;line-height:1.45}
+.tile.on{background:var(--tint);border-color:var(--accent)}
+.tile.on .tile__d{display:block}
+
+/* checklist */
+.check{list-style:none;padding:0!important}
+.check li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check li+li{margin-top:0}
+.check input{width:20px;height:20px;margin-top:4px;accent-color:var(--ok);flex:0 0 auto}
+.check label{cursor:pointer}
+.meter{height:10px;background:var(--tint);border-radius:5px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+
+/* inline cta */
+.cta-inline{background:var(--main-bg);color:var(--main-fg);border-radius:16px;padding:28px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
+.cta-inline h3{font-family:var(--font-h);color:#fff;font-size:1.35rem;margin:0 0 4px!important}
+.cta-inline p{opacity:.85;font-size:1rem;margin:0}
+@media(max-width:640px){.cta-inline{grid-template-columns:1fr}}
+
+/* faq */
+.faq{border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;width:100%;padding:18px 0;background:none;border:none;cursor:pointer;text-align:left;font-weight:700;font-size:1.05rem;gap:16px}
+.faq-q:hover{color:var(--accent)}
+.faq-q svg{flex-shrink:0;width:22px;height:22px;stroke:currentColor;transition:transform .3s}
+.faq-q[aria-expanded=true] svg{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s}
+.faq-a p{padding:0 0 18px;color:var(--soft)}
+
+/* related + end cta */
+.related{max-width:1140px;margin:0 auto;padding:40px 24px 64px}
+.related h2{font-family:var(--font-h);font-size:1.6rem;margin-bottom:20px}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rel{border:1px solid var(--line);border-radius:14px;padding:22px;transition:border-color .2s}
+.rel:hover{border-color:var(--accent)}
+.rel small{color:var(--accent);font-weight:700;font-size:.8rem}
+.rel h3{font-family:var(--font-h);font-size:1.1rem;line-height:1.35;margin-top:6px}
+@media(max-width:800px){.rel-grid{grid-template-columns:1fr}}
+.cta-section{background:var(--promo-bg);padding:56px 24px;text-align:center}
+.cta-section h2{font-family:var(--font-h);font-weight:600;font-size:2rem;margin-bottom:12px}
+.cta-section p{font-size:1.1rem;opacity:.75;margin:0 auto 24px;max-width:560px}
+.footer{padding:24px;border-top:1px solid rgba(0,0,0,.06);text-align:center;font-size:.85rem;color:rgba(15,35,65,.55)}
+.footer a{text-decoration:underline}
+.disclaimer{max-width:720px;margin:0 auto;padding:0 24px 24px;font-size:.8rem;color:var(--soft);text-align:center}
+@media(min-width:861px){.mobile-drawer,.drawer-overlay{display:none}}
+</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CPHQ Quality Improvement Tools: PDSA, Lean, Six Sigma and When to Use Each", "description": "The largest CPHQ category is Performance and Process Improvement. Learn the methods and tools it names, and practice choosing the right one.", "datePublished": "2026-03-01", "dateModified": "2026-09-16", "author": {"@type": "Organization", "name": "CPHQ Qbank"}, "publisher": {"@type": "Organization", "name": "CPHQ Qbank"}, "mainEntityOfPage": "https://cphqquestionbank.com/blog-cphq-quality-improvement-tools.html"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the difference between PDSA and Six Sigma?", "acceptedAnswer": {"@type": "Answer", "text": "PDSA is a rapid, small-scale test-of-change cycle. Six Sigma is a data-heavy project method (DMAIC) aimed at reducing variation and defects. PDSA is usually faster; Six Sigma suits complex, high-volume processes with measurable defects."}}, {"@type": "Question", "name": "Is Lean on the CPHQ exam?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The content outline names Lean, PDSA and Six Sigma as performance improvement methods, and fishbone diagrams, FMEA and process maps as quality tools."}}, {"@type": "Question", "name": "What does a fishbone diagram do?", "acceptedAnswer": {"@type": "Answer", "text": "It organizes possible causes of a problem into categories. It does not rank causes; a Pareto chart does that."}}, {"@type": "Question", "name": "What are the 8 wastes in Lean?", "acceptedAnswer": {"@type": "Answer", "text": "Defects, overproduction, waiting, non-utilized talent, transportation, inventory, motion and extra processing, often remembered as DOWNTIME."}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cphqquestionbank.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://cphqquestionbank.com/blog.html"}, {"@type": "ListItem", "position": 3, "name": "PDSA, Lean & Six Sigma for the CPHQ", "item": "https://cphqquestionbank.com/blog-cphq-quality-improvement-tools.html"}]}</script></head><body><header class="header"><div class="header__inner"><a href="/" class="header__logo">CPHQ Qbank</a>
+<nav class="nav" aria-label="Main"><a href="/">Home</a><a href="/#features">Features</a><a href="/blog.html" class="is-current">Blog</a><a href="/#faq">FAQ</a><a class="btn btn--primary btn--sm" href="https://cphq-healthcare-quality.base44.app">Try Free</a></nav>
+<button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button></div></header>
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<nav class="mobile-drawer" id="mobileDrawer" aria-label="Mobile"><a href="/">Home</a><a href="/#features">Features</a><a href="/blog.html">Blog</a><a href="/#faq">FAQ</a><a class="btn btn--primary" href="https://cphq-healthcare-quality.base44.app">Try 50 Free Questions</a></nav>
+<div class="spacer"></div><div class="progress" id="progress" aria-hidden="true"></div>
+<section class="a-hero"><div class="a-hero__inner">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog.html">Blog</a> / PDSA, Lean & Six Sigma for the CPHQ</nav>
+<span class="a-tag">Domain deep dive</span><h1>CPHQ Quality Improvement Tools: PDSA, Lean, Six Sigma and When to Use Each</h1><p class="a-dek">The largest CPHQ category is Performance and Process Improvement. Learn the methods and tools it names, and practice choosing the right one.</p>
+<div class="a-meta"><span>By the CPHQ Qbank team</span><span>10 min read</span><span>Updated September 2026</span></div>
+<div class="a-facts"><div><b>27</b><small>scored items, largest category</small></div><div><b>21.6%</b><small>of the scored exam</small></div><div><b>3</b><small>named methods</small></div><div><b>3</b><small>named tools</small></div></div></div></section>
+<div class="a-layout">
+<aside class="toc" aria-label="On this page"><p class="toc__title">On this page</p><ol data-toc></ol>
+<div class="toc__cta"><p>Test yourself on every CPHQ category with 50 free questions.</p><a class="btn btn--primary btn--sm" href="https://cphq-healthcare-quality.base44.app">Try free</a></div></aside>
+<main><details class="toc-mobile"><summary>On this page</summary><ol data-toc></ol></details>
+<article class="prose"><p class="lead">Performance and Process Improvement is the largest CPHQ category at 27 scored items. The content outline names three methods (Lean, PDSA and Six Sigma) and three tools (fishbone diagrams, FMEA and process maps). The exam rarely asks you to define them. It asks you to choose one.</p>
+
+<h2 id="mfi" data-toc="Model for Improvement">The Model for Improvement and PDSA</h2>
+<p>The Model for Improvement, popularized by IHI, starts with three questions and then tests changes in rapid Plan-Do-Study-Act cycles.</p>
+<ol class="steps">
+<li><h4>What are we trying to accomplish?</h4><p>A specific, time-bound aim: "Reduce ED door-to-provider time to under 30 minutes by June."</p></li>
+<li><h4>How will we know a change is an improvement?</h4><p>Outcome, process and balancing measures tracked over time.</p></li>
+<li><h4>What change can we make that will result in improvement?</h4><p>Ideas from evidence, other organizations and frontline staff, tested one at a time.</p></li>
+</ol>
+<p>Tap each phase of the cycle to see what happens there.</p>
+<div class="tool">
+  <div class="tool__head"><b>The PDSA cycle</b><span>Tap a phase</span></div>
+  <div class="tool__body grid2" style="align-items:center">
+    <svg viewBox="0 0 240 240" role="group" aria-label="PDSA cycle" style="max-width:260px;margin:0 auto">
+      <g class="ph" data-p="0" tabindex="0" role="button" aria-label="Plan" style="cursor:pointer"><path d="M120 120 L120 10 A110 110 0 0 1 230 120 Z" fill="rgba(25,65,120,1)"/><text x="165" y="80" fill="#fff" font-family="Exo" font-weight="700" font-size="22" text-anchor="middle">Plan</text></g>
+      <g class="ph" data-p="1" tabindex="0" role="button" aria-label="Do" style="cursor:pointer"><path d="M120 120 L230 120 A110 110 0 0 1 120 230 Z" fill="rgba(40,90,170,1)"/><text x="165" y="170" fill="#fff" font-family="Exo" font-weight="700" font-size="22" text-anchor="middle">Do</text></g>
+      <g class="ph" data-p="2" tabindex="0" role="button" aria-label="Study" style="cursor:pointer"><path d="M120 120 L120 230 A110 110 0 0 1 10 120 Z" fill="#4f82c8"/><text x="72" y="170" fill="#fff" font-family="Exo" font-weight="700" font-size="22" text-anchor="middle">Study</text></g>
+      <g class="ph" data-p="3" tabindex="0" role="button" aria-label="Act" style="cursor:pointer"><path d="M120 120 L10 120 A110 110 0 0 1 120 10 Z" fill="#7ea6dc"/><text x="72" y="80" fill="#fff" font-family="Exo" font-weight="700" font-size="22" text-anchor="middle">Act</text></g>
+      <circle cx="120" cy="120" r="34" fill="#fff"/><text x="120" y="126" text-anchor="middle" font-family="Exo" font-weight="700" font-size="16" fill="rgba(15,35,65,1)">PDSA</text>
+    </svg>
+    <div class="out" id="phout"><div class="out__big" style="font-size:1.5rem">Plan</div><p>State the objective and a prediction. Decide who, what, where and when, and what data you'll collect.</p></div>
+  </div>
+</div>
+<div class="callout"><p class="callout__t">Exam pattern</p><p>When a scenario says "test," "pilot," "small scale" or "learn whether," PDSA is usually the answer. Multiple small cycles are better than one big one.</p></div>
+
+<h2 id="lean" data-toc="Lean">Lean: remove waste, improve flow</h2>
+<p>Lean, rooted in the Toyota Production System, defines value from the patient's perspective and removes everything else. Tools include value stream maps, 5S, standard work, visual management and kanban. The eight wastes are easy to recall as <strong>DOWNTIME</strong>. Tap each letter for a healthcare example.</p>
+<div class="tiles">
+  <button class="tile" type="button"><span class="tile__k">D</span><span class="tile__t">Defects</span><span class="tile__d">Medication errors, mislabeled specimens, rework on incomplete forms.</span></button>
+  <button class="tile" type="button"><span class="tile__k">O</span><span class="tile__t">Overproduction</span><span class="tile__d">Ordering duplicate labs or imaging that isn't needed.</span></button>
+  <button class="tile" type="button"><span class="tile__k">W</span><span class="tile__t">Waiting</span><span class="tile__d">Patients waiting for beds, results or discharge orders.</span></button>
+  <button class="tile" type="button"><span class="tile__k">N</span><span class="tile__t">Non-utilized talent</span><span class="tile__d">Nurses doing clerical work; staff ideas never asked for.</span></button>
+  <button class="tile" type="button"><span class="tile__k">T</span><span class="tile__t">Transportation</span><span class="tile__d">Moving patients or specimens farther than necessary.</span></button>
+  <button class="tile" type="button"><span class="tile__k">I</span><span class="tile__t">Inventory</span><span class="tile__d">Overstocked supply rooms and expired medications.</span></button>
+  <button class="tile" type="button"><span class="tile__k">M</span><span class="tile__t">Motion</span><span class="tile__d">Staff walking to find supplies, equipment or computers.</span></button>
+  <button class="tile" type="button"><span class="tile__k">E</span><span class="tile__t">Extra processing</span><span class="tile__d">Documenting the same information in several places.</span></button>
+</div>
+
+<h2 id="six-sigma" data-toc="Six Sigma">Six Sigma: reduce variation and defects</h2>
+<p>Six Sigma uses statistics to make a process more consistent. At "six sigma" performance, a process produces about 3.4 defects per million opportunities. Projects follow <strong>DMAIC</strong>:</p>
+<ol class="steps">
+<li><h4>Define</h4><p>Problem, scope, customer requirements and project charter.</p></li>
+<li><h4>Measure</h4><p>Baseline performance and a reliable data collection plan.</p></li>
+<li><h4>Analyze</h4><p>Find and verify root causes with data.</p></li>
+<li><h4>Improve</h4><p>Develop, test and implement solutions.</p></li>
+<li><h4>Control</h4><p>Sustain gains with monitoring, control charts and standard work.</p></li>
+</ol>
+<p>Lean Six Sigma combines both: Lean for speed and flow, Six Sigma for precision.</p>
+
+<h2 id="compare" data-toc="Compare methods">Side-by-side comparison</h2>
+<div class="table-wrap"><table>
+<tr><th></th><th>PDSA</th><th>Lean</th><th>Six Sigma</th></tr>
+<tr><td><strong>Main goal</strong></td><td>Test and learn quickly</td><td>Remove waste, improve flow</td><td>Reduce variation and defects</td></tr>
+<tr><td><strong>Structure</strong></td><td>Plan, Do, Study, Act</td><td>Value, value stream, flow, pull, perfection</td><td>Define, Measure, Analyze, Improve, Control</td></tr>
+<tr><td><strong>Speed</strong></td><td>Days to weeks per cycle</td><td>Days (rapid events) to months</td><td>Months</td></tr>
+<tr><td><strong>Data needs</strong></td><td>Simple, often small samples</td><td>Time and flow observations</td><td>Heavy statistical analysis</td></tr>
+<tr><td><strong>Best for</strong></td><td>Trying a new idea safely</td><td>Delays, bottlenecks, inefficiency</td><td>Complex, high-volume processes</td></tr>
+</table></div>
+
+<div class="cta-inline"><div><h3>Practice with 500+ CPHQ questions</h3><p>Scenario-based, mapped to the NAHQ content outline, with an explanation for every answer. Your first 50 are free.</p></div><a class="btn btn--light" href="https://cphq-healthcare-quality.base44.app">Start free questions</a></div>
+
+<h2 id="tools" data-toc="Choose the right tool">Choose the right tool</h2>
+<p>This is exactly how the exam tests tools. Pick a goal to see the best match.</p>
+<div class="tool">
+  <div class="tool__head"><b>Quality tool picker</b><span>What do you need to do?</span></div>
+  <div class="tool__body">
+    <div class="field"><label for="goal">Your goal</label><select id="goal"></select></div>
+    <div class="out" id="tout"></div>
+  </div>
+</div>
+
+<h3>Pareto chart example</h3>
+<p>A surgical services team logged 100 first-case delays. The Pareto chart shows two causes drive 70% of the problem, so that's where to start.</p>
+<svg viewBox="0 0 600 310" role="img" aria-label="Pareto chart: surgeon late 42, consent incomplete 28, patient not ready 18, equipment missing 7, anesthesia late 5; cumulative 42, 70, 88, 95, 100 percent" style="width:100%;border:1px solid rgba(15,35,65,.12);border-radius:12px;background:#fff">
+  <g font-family="Open Sans" font-size="11" fill="rgba(15,35,65,.66)">
+    <line x1="60" y1="250" x2="560" y2="250" stroke="rgba(15,35,65,.3)"/><line x1="60" y1="30" x2="60" y2="250" stroke="rgba(15,35,65,.3)"/><line x1="560" y1="30" x2="560" y2="250" stroke="rgba(15,35,65,.3)"/>
+    <line x1="60" y1="96" x2="560" y2="96" stroke="#d97706" stroke-dasharray="4 4"/><text x="552" y="90" text-anchor="end" fill="#9a5b00">70%</text>
+    <text x="52" y="254" text-anchor="end">0</text><text x="52" y="144" text-anchor="end">25</text><text x="52" y="34" text-anchor="end">50</text>
+    <text x="568" y="254">0%</text><text x="568" y="144">50%</text><text x="568" y="34">100%</text>
+  </g>
+  <g fill="rgba(25,65,120,1)"><rect x="60" y="65.2" width="70" height="184.8" rx="3"/><rect x="160" y="126.8" width="70" height="123.2" rx="3"/></g>
+  <g fill="#7ea6dc"><rect x="260" y="170.8" width="70" height="79.2" rx="3"/><rect x="360" y="219.2" width="70" height="30.8" rx="3"/><rect x="460" y="228" width="70" height="22" rx="3"/></g>
+  <polyline points="95,157.6 195,96 295,56.4 395,41 495,30" fill="none" stroke="#d97706" stroke-width="2.5"/>
+  <g fill="#d97706"><circle cx="95" cy="157.6" r="4"/><circle cx="195" cy="96" r="4"/><circle cx="295" cy="56.4" r="4"/><circle cx="395" cy="41" r="4"/><circle cx="495" cy="30" r="4"/></g>
+  <g font-family="Open Sans" font-size="11.5" fill="rgba(15,35,65,1)" text-anchor="middle">
+    <text x="95" y="268">Surgeon late</text><text x="195" y="268">Consent</text><text x="195" y="282">incomplete</text><text x="295" y="268">Patient</text><text x="295" y="282">not ready</text><text x="395" y="268">Equipment</text><text x="395" y="282">missing</text><text x="495" y="268">Anesthesia</text><text x="495" y="282">late</text>
+    <text x="95" y="60" font-weight="700">42</text><text x="195" y="121" font-weight="700">28</text><text x="295" y="165" font-weight="700">18</text><text x="395" y="214" font-weight="700">7</text><text x="495" y="223" font-weight="700">5</text>
+  </g>
+</svg>
+<p class="src">Illustrative data.</p>
+
+<h2 id="teams" data-toc="Teams and change">Teams and leading change</h2>
+<p>The outline also covers establishing teams and leading change. Know these roles:</p>
+<div class="table-wrap"><table>
+<tr><th>Role</th><th>Responsibility</th></tr>
+<tr><td>Executive sponsor</td><td>Removes barriers, secures resources and connects the work to strategy</td></tr>
+<tr><td>Team leader</td><td>Manages the project, agenda and timeline</td></tr>
+<tr><td>Facilitator</td><td>Guides process and tools, keeps discussion productive and neutral</td></tr>
+<tr><td>Process owner</td><td>Accountable for the process and for sustaining the change</td></tr>
+<tr><td>Frontline members</td><td>Know how the work is really done; essential for buy-in</td></tr>
+</table></div>
+<p>Expect questions on resistance to change. The best answers involve engaging the people affected early, communicating the "why" with data, and celebrating small wins.</p>
+
+<div class="pq" data-answer="b"><div class="pq__top"><span>Practice question</span><span class="pq__dom">Performance & Process Improvement</span></div><p class="pq__stem">Patients in an outpatient infusion center wait an average of 90 minutes from check-in to treatment. Much of the delay comes from walking between rooms, waiting for pharmacy and duplicate paperwork. Which method best fits?</p><div class="pq__opts"><button class="pq__opt" data-k="a"><b>A</b><span>Six Sigma DMAIC focused on statistical variation</span></button><button class="pq__opt" data-k="b"><b>B</b><span>Lean, starting with a value stream map</span></button><button class="pq__opt" data-k="c"><b>C</b><span>Root cause analysis</span></button><button class="pq__opt" data-k="d"><b>D</b><span>Failure mode and effects analysis</span></button></div><div class="pq__exp" aria-live="polite"><p class="pq__verdict"></p><p>The problems described (walking, waiting and duplicate paperwork) are classic Lean wastes: motion, waiting and extra processing. A value stream map shows each step and where time is lost. Six Sigma targets variation and defects, while RCA and FMEA focus on safety events and risks.</p></div></div>
+
+<div class="pq" data-answer="d"><div class="pq__top"><span>Practice question</span><span class="pq__dom">Performance & Process Improvement</span></div><p class="pq__stem">An improvement team has reduced catheter-associated urinary tract infections for three consecutive months. What should the team do to sustain the gain?</p><div class="pq__opts"><button class="pq__opt" data-k="a"><b>A</b><span>Disband the team since the goal has been met</span></button><button class="pq__opt" data-k="b"><b>B</b><span>Increase the target and restart the project</span></button><button class="pq__opt" data-k="c"><b>C</b><span>Stop measuring to reduce data collection burden</span></button><button class="pq__opt" data-k="d"><b>D</b><span>Hand off to the process owner with standard work and ongoing monitoring</span></button></div><div class="pq__exp" aria-live="polite"><p class="pq__verdict"></p><p>Sustainability is the "Control" (or "Act") stage: standardize the new process, assign ownership, and keep monitoring, often with a control chart, so backsliding is caught early. Disbanding or stopping measurement risks losing the improvement.</p></div></div>
+
+
+<h2 id="faq" data-toc="FAQ">Frequently asked questions</h2><div class="faq"><div class="faq-item"><button class="faq-q"><span>What is the difference between PDSA and Six Sigma?</span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>PDSA is a rapid, small-scale test-of-change cycle. Six Sigma is a data-heavy project method (DMAIC) aimed at reducing variation and defects. PDSA is usually faster; Six Sigma suits complex, high-volume processes with measurable defects.</p></div></div><div class="faq-item"><button class="faq-q"><span>Is Lean on the CPHQ exam?</span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>Yes. The content outline names Lean, PDSA and Six Sigma as performance improvement methods, and fishbone diagrams, FMEA and process maps as quality tools.</p></div></div><div class="faq-item"><button class="faq-q"><span>What does a fishbone diagram do?</span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>It organizes possible causes of a problem into categories. It does not rank causes; a Pareto chart does that.</p></div></div><div class="faq-item"><button class="faq-q"><span>What are the 8 wastes in Lean?</span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>Defects, overproduction, waiting, non-utilized talent, transportation, inventory, motion and extra processing, often remembered as DOWNTIME.</p></div></div></div>
+<p class="src">Figures are from NAHQ's 2024 CPHQ Detailed Content Outline (Revision 2b) and 2024 Domestic Candidate Handbook unless noted. Fees and policies change; the current handbook on nahq.org is the controlling source.</p>
+</article></main></div>
+<section class="related"><h2>Keep studying</h2><div class="rel-grid"><a class="rel" href="/blog-cphq-health-data-analytics.html"><small>Domain deep dive</small><h3>CPHQ Health Data Analytics: Control Charts, Statistics and Measures Made Simple</h3></a><a class="rel" href="/blog-cphq-patient-safety.html"><small>Domain deep dive</small><h3>CPHQ Patient Safety Guide: RCA, FMEA, Just Culture and High Reliability</h3></a><a class="rel" href="/blog-cphq-practice-questions.html"><small>Practice questions</small><h3>12 Free CPHQ Practice Questions with Explanations</h3></a></div></section>
+<section class="cta-section"><h2>Ready to practice?</h2><p>500+ scenario-based questions covering every CPHQ content category. Start with 50 free, no credit card required.</p><a class="btn btn--primary" href="https://cphq-healthcare-quality.base44.app">Start 50 Free Questions</a></section>
+<footer class="footer">&copy; 2026 CPHQ Qbank &bull; <a href="/">Home</a> &bull; <a href="/blog.html">Blog</a> &bull; <a href="/Privacy_Policy.html">Privacy</a> &bull; <a href="/Terms_of_Service.html">Terms</a> &bull; <a href="mailto:support@cphqquestionbank.com">Contact</a>
+<p style="margin-top:8px">CPHQ is a registered certification of the National Association for Healthcare Quality (NAHQ). CPHQ Qbank is independent and not affiliated with or endorsed by NAHQ or HQCC.</p></footer><script>(function(){
+  var hb=document.getElementById('hamburger'),dr=document.getElementById('mobileDrawer'),ov=document.getElementById('drawerOverlay');
+  function o(){hb.classList.add('open');dr.classList.add('open');ov.classList.add('open');document.body.style.overflow='hidden'}
+  function c(){hb.classList.remove('open');dr.classList.remove('open');ov.classList.remove('open');document.body.style.overflow=''}
+  if(hb){hb.addEventListener('click',function(){dr.classList.contains('open')?c():o()});ov.addEventListener('click',c);dr.querySelectorAll('a').forEach(function(a){a.addEventListener('click',c)})}
+
+  // reading progress
+  var pb=document.getElementById('progress'),art=document.querySelector('.prose');
+  function prog(){if(!pb||!art)return;var r=art.getBoundingClientRect(),h=art.offsetHeight-window.innerHeight*.6;var p=Math.min(1,Math.max(0,-r.top/h));pb.style.width=(p*100)+'%'}
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // table of contents
+  var hs=[].slice.call(document.querySelectorAll('.prose h2[id]'));
+  var lists=document.querySelectorAll('ol[data-toc]');
+  lists.forEach(function(ol){hs.forEach(function(h){var li=document.createElement('li'),a=document.createElement('a');a.href='#'+h.id;a.textContent=h.dataset.toc||h.textContent;li.appendChild(a);ol.appendChild(li)})});
+  var links=document.querySelectorAll('.toc a');
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-20% 0px -70% 0px'});hs.forEach(function(h){io.observe(h)})}
+
+  // faq
+  document.querySelectorAll('.faq-q').forEach(function(b){b.setAttribute('aria-expanded','false');b.addEventListener('click',function(){var a=b.nextElementSibling,op=b.getAttribute('aria-expanded')==='true';document.querySelectorAll('.faq-q').forEach(function(x){x.setAttribute('aria-expanded','false');x.nextElementSibling.style.maxHeight=null});if(!op){b.setAttribute('aria-expanded','true');a.style.maxHeight=a.scrollHeight+'px'}})});
+
+  // practice questions
+  var score={right:0,done:0};
+  document.querySelectorAll('.pq').forEach(function(q){
+    var ans=q.dataset.answer;
+    q.querySelectorAll('.pq__opt').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        if(q.classList.contains('answered'))return;
+        q.classList.add('answered');
+        var ok=btn.dataset.k===ans;
+        q.querySelectorAll('.pq__opt').forEach(function(b){b.disabled=true;if(b.dataset.k===ans)b.classList.add('is-right')});
+        if(!ok)btn.classList.add('is-wrong');
+        var v=q.querySelector('.pq__verdict');if(v){v.textContent=ok?'Correct.':'Not quite. The best answer is '+ans.toUpperCase()+'.';v.style.color=ok?'var(--ok)':'var(--bad)'}
+        score.done++;if(ok)score.right++;
+        document.dispatchEvent(new CustomEvent('pq:answer',{detail:score}));
+      });
+    });
+  });
+
+  // tiles
+  document.querySelectorAll('.tile').forEach(function(t){t.setAttribute('aria-expanded','false');t.addEventListener('click',function(){var on=t.classList.toggle('on');t.setAttribute('aria-expanded',on)})});
+
+  // checklists
+  document.querySelectorAll('[data-checklist]').forEach(function(box){
+    var key='cl:'+box.dataset.checklist,inputs=box.querySelectorAll('input[type=checkbox]'),m=box.querySelector('.meter i'),lab=box.querySelector('[data-count]');
+    var saved={};try{saved=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+    inputs.forEach(function(i,n){i.checked=!!saved[n];i.addEventListener('change',upd)});
+    function upd(){var d=0,s={};inputs.forEach(function(i,n){if(i.checked){d++;s[n]=1}});if(m)m.style.width=(d/inputs.length*100)+'%';if(lab)lab.textContent=d+' of '+inputs.length+' done';try{localStorage.setItem(key,JSON.stringify(s))}catch(e){}}
+    upd();
+  });
+
+  // segmented buttons
+  document.querySelectorAll('.seg').forEach(function(s){s.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){s.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');s.dispatchEvent(new CustomEvent('seg:change',{detail:b.dataset.v}))})})});
+})();
+</script><script>
+(function(){
+var phases=[["Plan","State the objective and a prediction. Decide who, what, where and when, and what data you'll collect."],["Do","Carry out the test on a small scale. Document problems and unexpected observations, and begin analyzing data."],["Study","Compare results with your prediction. Summarize what you learned, including what surprised you."],["Act","Adopt, adapt or abandon the change. Plan the next cycle, often at a larger scale or under new conditions."]];
+document.querySelectorAll('.ph').forEach(function(g){function go(){var p=phases[+g.dataset.p];document.getElementById('phout').innerHTML='<div class="out__big" style="font-size:1.5rem">'+p[0]+'</div><p>'+p[1]+'</p>';document.querySelectorAll('.ph path').forEach(function(x){x.style.opacity=.55});g.querySelector('path').style.opacity=1}
+ g.addEventListener('click',go);g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}})});
+var T=[["Understand how work currently flows","Process map (flowchart)","Documents each step, decision and handoff so the team sees the real process, including rework loops and delays. Usually the first tool in a project."],
+["Identify all possible causes of a problem","Fishbone (cause-and-effect) diagram","Organizes brainstormed causes into categories such as people, methods, equipment, materials, environment and measurement. It does not rank causes."],
+["Decide which causes to tackle first","Pareto chart","Bars sorted from most to least frequent with a cumulative line. Applies the 80/20 principle so effort goes where it matters most."],
+["Dig beneath one specific cause","5 Whys","Ask why repeatedly until you reach a system-level cause you can act on. Simple, fast and often used inside an RCA."],
+["Test a change quickly and safely","PDSA cycle","Small-scale test with a prediction, then learn and adjust. Build up from one patient or one shift."],
+["Eliminate delays and wasted steps","Lean value stream map","Shows value-added and non-value-added time across the whole process to target waste."],
+["Reduce defects in a complex, high-volume process","Six Sigma (DMAIC)","A structured, data-intensive project method aimed at reducing variation."],
+["Prevent failures in a new or changed process","Failure mode and effects analysis (FMEA)","Proactive risk assessment that scores each failure mode for severity, occurrence and detection."],
+["Learn why a serious event happened","Root cause analysis (RCA)","Retrospective, systems-focused review of an event that already occurred, ending in strong corrective actions."],
+["See whether a process is changing over time","Run chart or control chart","Plots data over time. Control charts add limits that separate common from special cause variation."],
+["Organize a large set of brainstormed ideas","Affinity diagram","Groups ideas into natural themes, useful after brainstorming and before prioritizing."],
+["Connect an aim to the changes that drive it","Driver diagram","Links the aim to primary and secondary drivers and change ideas; common in IHI-style projects."]];
+var s=document.getElementById('goal');T.forEach(function(t,i){var o=document.createElement('option');o.value=i;o.textContent=t[0];s.appendChild(o)});
+function show(){var t=T[+s.value];document.getElementById('tout').innerHTML='<p class="muted">Best match</p><div class="out__big" style="font-size:1.5rem">'+t[1]+'</div><p style="margin-top:6px">'+t[2]+'</p>'}
+s.onchange=show;show();
+})();
+</script>
+</body></html>

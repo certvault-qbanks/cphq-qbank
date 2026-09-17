@@ -1,0 +1,436 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CPHQ Patient Safety Guide: RCA, FMEA, Just Culture and High Reliability | CPHQ Qbank</title><meta name="description" content="Patient Safety is 18 CPHQ items. Master root cause analysis, FMEA, Just Culture and high reliability with scenarios and an RPN calculator."><link rel="canonical" href="https://cphqquestionbank.com/blog-cphq-patient-safety.html">
+<meta property="og:type" content="article"><meta property="og:url" content="https://cphqquestionbank.com/blog-cphq-patient-safety.html"><meta property="og:title" content="CPHQ Patient Safety Guide: RCA, FMEA, Just Culture and High Reliability"><meta property="og:description" content="Patient Safety is 18 CPHQ items. Master root cause analysis, FMEA, Just Culture and high reliability with scenarios and an RPN calculator."><meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;600;700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>:root{--fg:rgba(15,35,65,1);--bg:#fff;--main-fg:rgba(225,235,250,1);--main-bg:rgba(25,65,120,1);--promo-fg:rgba(25,65,120,1);--promo-bg:rgba(225,235,250,1);--sec-bg:rgba(190,210,240,1);--btn-fg:#fff;--btn-bg:rgba(25,65,120,1);--accent:rgba(40,90,170,1);--line:rgba(15,35,65,.12);--soft:rgba(15,35,65,.66);--tint:#f4f7fc;--ok:#15803d;--ok-bg:#e8f6ee;--bad:#b42318;--bad-bg:#fdecea;--warn:#9a5b00;--warn-bg:#fff5e0;--r:8px;--font-h:'Exo',sans-serif;--font-b:'Open Sans',sans-serif;--header-h:72px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 16px)}
+body{font-family:var(--font-b);color:var(--fg);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%}
+button,input,select{font-family:inherit;font-size:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+/* header (matches index.html) */
+.header{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--header-h);background:rgba(255,255,255,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.06)}
+.header__inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:100%}
+.header__logo{font-family:var(--font-h);font-weight:700;font-size:1.75rem;line-height:1}
+.nav{display:flex;align-items:center;gap:4px}
+.nav a{padding:8px 16px;font-size:.95rem;font-weight:600;border-radius:6px;transition:background .2s}
+.nav a:hover{background:rgba(0,0,0,.05)}
+.nav a.is-current{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 30px;font-weight:700;font-size:1rem;border-radius:var(--r);border:none;cursor:pointer;transition:box-shadow .2s,transform .2s}
+.btn--primary{background:var(--btn-bg);color:var(--btn-fg)!important;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.btn--primary:hover{box-shadow:0 6px 24px rgba(0,0,0,.2);transform:translateY(-1px)}
+.btn--light{background:#fff;color:var(--fg)!important}
+.btn--ghost{background:transparent;border:2px solid var(--line);color:var(--fg)}
+.btn--sm{padding:10px 20px;font-size:.9rem}
+.nav .btn{margin-left:10px}
+.hamburger{display:none;background:none;border:none;cursor:pointer;width:44px;height:44px;position:relative;z-index:600}
+.hamburger span{display:block;width:24px;height:2px;background:var(--fg);border-radius:2px;position:absolute;left:10px;transition:all .3s}
+.hamburger span:nth-child(1){top:14px}.hamburger span:nth-child(2){top:21px}.hamburger span:nth-child(3){top:28px}
+.hamburger.open span:nth-child(1){top:21px;transform:rotate(45deg)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){top:21px;transform:rotate(-45deg)}
+.mobile-drawer{position:fixed;top:0;right:0;bottom:0;width:300px;max-width:85vw;background:#fff;z-index:550;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);box-shadow:-8px 0 40px rgba(0,0,0,.15);padding:calc(var(--header-h) + 20px) 28px 28px;display:flex;flex-direction:column;gap:4px}
+.mobile-drawer.open{transform:none}
+.mobile-drawer a{padding:14px 16px;font-size:1.05rem;font-weight:600;border-radius:var(--r)}
+.mobile-drawer .btn{margin-top:12px}
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:540;opacity:0;pointer-events:none;transition:opacity .3s}
+.drawer-overlay.open{opacity:1;pointer-events:auto}
+@media(max-width:860px){.nav{display:none}.hamburger{display:block}.header__logo{font-size:1.35rem}}
+.spacer{height:var(--header-h)}
+.progress{position:fixed;top:var(--header-h);left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),#4f9be8);z-index:501}
+
+/* article hero */
+.a-hero{background:linear-gradient(135deg,var(--main-bg) 0%,var(--accent) 100%);color:var(--main-fg);padding:48px 24px 56px}
+.a-hero__inner{max-width:1140px;margin:0 auto}
+.crumbs{font-size:.88rem;opacity:.75;margin-bottom:22px}
+.crumbs a:hover{text-decoration:underline}
+.a-tag{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.8rem;font-weight:700;padding:5px 14px;border-radius:100px;margin-bottom:18px}
+.a-hero h1{font-family:var(--font-h);font-weight:700;font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.12;letter-spacing:-.02em;color:#fff;max-width:860px}
+.a-dek{font-size:1.2rem;line-height:1.6;opacity:.85;max-width:720px;margin-top:18px}
+.a-meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;font-size:.9rem;opacity:.8}
+.a-meta span{display:inline-flex;align-items:center;gap:6px}
+.a-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.2);border-radius:12px;overflow:hidden;margin-top:36px;max-width:860px}
+.a-facts div{background:rgba(15,40,85,.55);padding:18px 20px}
+.a-facts b{display:block;font-family:var(--font-h);font-size:1.7rem;color:#fff;line-height:1.1}
+.a-facts small{font-size:.85rem;opacity:.8}
+@media(max-width:700px){.a-facts{grid-template-columns:repeat(2,1fr)}}
+
+/* layout */
+.a-layout{max-width:1140px;margin:0 auto;padding:48px 24px 24px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:56px;align-items:start}
+.a-layout>main{min-width:0}
+.toc{position:sticky;top:calc(var(--header-h) + 28px);font-size:.9rem}
+.toc__title{font-family:var(--font-h);font-weight:700;font-size:1rem;margin-bottom:12px}
+.toc ol{list-style:none;border-left:2px solid var(--line)}
+.toc a{display:block;padding:6px 0 6px 14px;margin-left:-2px;border-left:2px solid transparent;color:var(--soft);line-height:1.4}
+.toc a:hover{color:var(--fg)}
+.toc a.active{border-left-color:var(--accent);color:var(--accent);font-weight:700}
+.toc__cta{margin-top:24px;padding:18px;border-radius:12px;background:var(--promo-bg)}
+.toc__cta p{font-size:.88rem;line-height:1.5;margin-bottom:12px}
+.toc-mobile{display:none}
+@media(max-width:960px){.a-layout{grid-template-columns:minmax(0,1fr);gap:0;padding-top:28px}.toc{display:none}.toc-mobile{display:block;border:1px solid var(--line);border-radius:12px;margin-bottom:28px}.toc-mobile summary{padding:14px 18px;font-weight:700;cursor:pointer}.toc-mobile ol{padding:0 18px 16px 38px}.toc-mobile li{padding:4px 0}}
+
+/* prose */
+.prose{max-width:720px;font-size:1.075rem;line-height:1.78}
+.prose>*+*{margin-top:1.1em}
+.prose h2{font-family:var(--font-h);font-weight:700;font-size:clamp(1.6rem,3vw,2.05rem);line-height:1.2;letter-spacing:-.01em;margin-top:2.4em}
+.prose h2:first-child{margin-top:0}
+.prose h3{font-family:var(--font-h);font-weight:600;font-size:1.3rem;line-height:1.3;margin-top:1.8em}
+.prose ul,.prose ol{padding-left:1.3em}
+.prose li+li{margin-top:.4em}
+.prose li::marker{color:var(--accent)}
+.prose a:not(.btn){color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.prose strong{font-weight:700}
+.lead{font-size:1.22rem;line-height:1.7}
+.src{font-size:.85rem;color:var(--soft)}
+
+/* callouts */
+.callout{border-left:4px solid var(--accent);background:var(--tint);border-radius:0 12px 12px 0;padding:18px 22px}
+.callout__t{font-family:var(--font-h);font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.callout--trap{border-color:#d97706;background:var(--warn-bg)}
+.callout--ok{border-color:var(--ok);background:var(--ok-bg)}
+.callout p{margin:0}
+
+/* bar chart */
+.bars{border:1px solid var(--line);border-radius:14px;padding:22px 22px 14px}
+.bars__h{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:16px;flex-wrap:wrap}
+.bars__h strong{font-family:var(--font-h);font-size:1.1rem}
+.bar{display:grid;grid-template-columns:minmax(0,210px) 1fr 58px;gap:12px;align-items:center;padding:7px 0;font-size:.93rem;line-height:1.3}
+.bar__track{height:14px;background:var(--tint);border-radius:7px;overflow:hidden}
+.bar__fill{height:100%;background:var(--accent);border-radius:7px;width:var(--w)}
+.bar__fill--hi{background:var(--main-bg)}
+.bar__v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+@media(max-width:560px){.bar{grid-template-columns:1fr 50px}.bar__track{grid-column:1/-1;grid-row:2}}
+
+/* stacked bar */
+.stack{display:flex;height:46px;border-radius:10px;overflow:hidden;font-weight:700;font-size:.9rem;color:#fff}
+.stack>div{display:flex;align-items:center;justify-content:center;flex:var(--w)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.9rem;margin-top:10px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+/* tool widget */
+.tool{border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 2px 0 var(--line)}
+.tool__head{background:var(--main-bg);color:#fff;padding:14px 22px;display:flex;align-items:center;gap:10px}
+.tool__head b{font-family:var(--font-h);font-size:1.08rem}
+.tool__head span{font-size:.85rem;opacity:.75;margin-left:auto}
+.tool__body{padding:22px}
+.tool__body>*+*{margin-top:16px}
+.field{display:grid;gap:6px}
+.field label,.flabel{font-weight:700;font-size:.92rem}
+.field input[type=number],.field select{padding:11px 12px;border:1.5px solid var(--line);border-radius:8px;background:#fff;width:100%}
+.field input[type=range]{width:100%;accent-color:var(--accent)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:600px){.grid2,.grid3{grid-template-columns:1fr}}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button,.chip{padding:9px 16px;border:1.5px solid var(--line);border-radius:100px;background:#fff;cursor:pointer;font-weight:600;font-size:.92rem;transition:background .15s,border-color .15s}
+.seg button:hover,.chip:hover{border-color:var(--accent)}
+.seg button[aria-pressed=true],.chip.on{background:var(--main-bg);border-color:var(--main-bg);color:#fff}
+.out{background:var(--tint);border-radius:12px;padding:18px}
+.out__big{font-family:var(--font-h);font-weight:700;font-size:2.1rem;line-height:1.1}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px}
+.kpi b{display:block;font-family:var(--font-h);font-size:1.5rem;line-height:1.15}
+.kpi small{color:var(--soft);font-size:.82rem}
+.muted{color:var(--soft);font-size:.9rem}
+
+/* tables */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:.95rem;line-height:1.5}
+th,td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:var(--tint);font-family:var(--font-h);font-weight:700;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+
+/* practice question */
+.pq{border:1.5px solid var(--line);border-radius:16px;padding:22px;background:#fff}
+.pq__top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px;font-size:.85rem;color:var(--soft);font-weight:600}
+.pq__dom{background:var(--promo-bg);color:var(--promo-fg);padding:3px 10px;border-radius:100px}
+.pq__stem{font-weight:600;line-height:1.6}
+.pq__opts{display:grid;gap:8px;margin-top:14px}
+.pq__opt{display:flex;gap:12px;align-items:flex-start;text-align:left;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;line-height:1.5;transition:border-color .15s,background .15s}
+.pq__opt:hover:not(:disabled){border-color:var(--accent);background:var(--tint)}
+.pq__opt b{flex:0 0 26px;height:26px;border-radius:50%;background:var(--tint);display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.pq__opt:disabled{cursor:default}
+.pq__opt.is-right{border-color:var(--ok);background:var(--ok-bg)}
+.pq__opt.is-right b{background:var(--ok);color:#fff}
+.pq__opt.is-wrong{border-color:var(--bad);background:var(--bad-bg)}
+.pq__opt.is-wrong b{background:var(--bad);color:#fff}
+.pq__exp{display:none;margin-top:14px;padding:14px 16px;border-radius:10px;background:var(--tint);line-height:1.65}
+.pq.answered .pq__exp{display:block}
+.pq__verdict{font-weight:700;margin-bottom:4px}
+
+/* steps (true sequences only) */
+.steps{list-style:none;padding:0!important;counter-reset:s;position:relative}
+.steps>li{position:relative;padding:0 0 22px 56px;counter-increment:s}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;background:var(--main-bg);color:#fff;font-family:var(--font-h);font-weight:700;display:flex;align-items:center;justify-content:center}
+.steps>li::after{content:'';position:absolute;left:18px;top:42px;bottom:4px;width:2px;background:var(--line)}
+.steps>li:last-child::after{display:none}
+.steps>li+li{margin-top:0}
+.steps h4{font-family:var(--font-h);font-size:1.08rem;margin-bottom:2px;padding-top:6px}
+.steps p{font-size:1rem;color:var(--soft)}
+
+/* details/accordion cards */
+.dcard{border:1px solid var(--line);border-radius:12px;background:#fff}
+.dcard+.dcard{margin-top:10px}
+.dcard summary{list-style:none;cursor:pointer;padding:16px 18px;display:flex;align-items:center;gap:14px;font-weight:700}
+.dcard summary::-webkit-details-marker{display:none}
+.dcard summary::after{content:'+';margin-left:auto;font-size:1.4rem;line-height:1;color:var(--accent);transition:transform .2s}
+.dcard[open] summary::after{transform:rotate(45deg)}
+.dcard__n{flex:0 0 auto;min-width:46px;text-align:center;padding:4px 8px;border-radius:8px;background:var(--promo-bg);color:var(--promo-fg);font-size:.85rem}
+.dcard__body{padding:0 18px 18px;font-size:1rem}
+.dcard__body>*+*{margin-top:.7em}
+
+/* flip / tile grid */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.tile{border:1.5px solid var(--line);border-radius:12px;padding:16px;background:#fff;cursor:pointer;text-align:left;min-height:120px;display:flex;flex-direction:column;gap:6px;transition:border-color .15s,background .15s}
+.tile:hover{border-color:var(--accent)}
+.tile__k{font-family:var(--font-h);font-weight:700;font-size:1.6rem;line-height:1;color:var(--accent)}
+.tile__t{font-weight:700}
+.tile__d{font-size:.88rem;color:var(--soft);display:none;line-height:1.45}
+.tile.on{background:var(--tint);border-color:var(--accent)}
+.tile.on .tile__d{display:block}
+
+/* checklist */
+.check{list-style:none;padding:0!important}
+.check li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check li+li{margin-top:0}
+.check input{width:20px;height:20px;margin-top:4px;accent-color:var(--ok);flex:0 0 auto}
+.check label{cursor:pointer}
+.meter{height:10px;background:var(--tint);border-radius:5px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+
+/* inline cta */
+.cta-inline{background:var(--main-bg);color:var(--main-fg);border-radius:16px;padding:28px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
+.cta-inline h3{font-family:var(--font-h);color:#fff;font-size:1.35rem;margin:0 0 4px!important}
+.cta-inline p{opacity:.85;font-size:1rem;margin:0}
+@media(max-width:640px){.cta-inline{grid-template-columns:1fr}}
+
+/* faq */
+.faq{border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;width:100%;padding:18px 0;background:none;border:none;cursor:pointer;text-align:left;font-weight:700;font-size:1.05rem;gap:16px}
+.faq-q:hover{color:var(--accent)}
+.faq-q svg{flex-shrink:0;width:22px;height:22px;stroke:currentColor;transition:transform .3s}
+.faq-q[aria-expanded=true] svg{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s}
+.faq-a p{padding:0 0 18px;color:var(--soft)}
+
+/* related + end cta */
+.related{max-width:1140px;margin:0 auto;padding:40px 24px 64px}
+.related h2{font-family:var(--font-h);font-size:1.6rem;margin-bottom:20px}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rel{border:1px solid var(--line);border-radius:14px;padding:22px;transition:border-color .2s}
+.rel:hover{border-color:var(--accent)}
+.rel small{color:var(--accent);font-weight:700;font-size:.8rem}
+.rel h3{font-family:var(--font-h);font-size:1.1rem;line-height:1.35;margin-top:6px}
+@media(max-width:800px){.rel-grid{grid-template-columns:1fr}}
+.cta-section{background:var(--promo-bg);padding:56px 24px;text-align:center}
+.cta-section h2{font-family:var(--font-h);font-weight:600;font-size:2rem;margin-bottom:12px}
+.cta-section p{font-size:1.1rem;opacity:.75;margin:0 auto 24px;max-width:560px}
+.footer{padding:24px;border-top:1px solid rgba(0,0,0,.06);text-align:center;font-size:.85rem;color:rgba(15,35,65,.55)}
+.footer a{text-decoration:underline}
+.disclaimer{max-width:720px;margin:0 auto;padding:0 24px 24px;font-size:.8rem;color:var(--soft);text-align:center}
+@media(min-width:861px){.mobile-drawer,.drawer-overlay{display:none}}
+</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CPHQ Patient Safety Guide: RCA, FMEA, Just Culture and High Reliability", "description": "Patient Safety is 18 CPHQ items. Master root cause analysis, FMEA, Just Culture and high reliability with scenarios and an RPN calculator.", "datePublished": "2026-03-01", "dateModified": "2026-09-16", "author": {"@type": "Organization", "name": "CPHQ Qbank"}, "publisher": {"@type": "Organization", "name": "CPHQ Qbank"}, "mainEntityOfPage": "https://cphqquestionbank.com/blog-cphq-patient-safety.html"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the difference between RCA and FMEA?", "acceptedAnswer": {"@type": "Answer", "text": "Root cause analysis is retrospective: it examines an event that already happened. FMEA is prospective: it looks for ways a process could fail before harm occurs."}}, {"@type": "Question", "name": "How is an RPN calculated in FMEA?", "acceptedAnswer": {"@type": "Answer", "text": "Risk priority number = severity x occurrence x detection, each usually scored 1 to 10, for a maximum of 1,000. Higher numbers get attention first, though high severity alone should also trigger action."}}, {"@type": "Question", "name": "What are the three behaviors in Just Culture?", "acceptedAnswer": {"@type": "Answer", "text": "Human error (console the person), at-risk behavior (coach the person) and reckless behavior (consider sanction). The response depends on the behavior, not the outcome."}}, {"@type": "Question", "name": "What is a sentinel event?", "acceptedAnswer": {"@type": "Answer", "text": "The Joint Commission defines it as a patient safety event, not primarily related to the natural course of the illness, that results in death, permanent harm or severe temporary harm."}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cphqquestionbank.com/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://cphqquestionbank.com/blog.html"}, {"@type": "ListItem", "position": 3, "name": "CPHQ Patient Safety Guide", "item": "https://cphqquestionbank.com/blog-cphq-patient-safety.html"}]}</script></head><body><header class="header"><div class="header__inner"><a href="/" class="header__logo">CPHQ Qbank</a>
+<nav class="nav" aria-label="Main"><a href="/">Home</a><a href="/#features">Features</a><a href="/blog.html" class="is-current">Blog</a><a href="/#faq">FAQ</a><a class="btn btn--primary btn--sm" href="https://cphq-healthcare-quality.base44.app">Try Free</a></nav>
+<button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button></div></header>
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<nav class="mobile-drawer" id="mobileDrawer" aria-label="Mobile"><a href="/">Home</a><a href="/#features">Features</a><a href="/blog.html">Blog</a><a href="/#faq">FAQ</a><a class="btn btn--primary" href="https://cphq-healthcare-quality.base44.app">Try 50 Free Questions</a></nav>
+<div class="spacer"></div><div class="progress" id="progress" aria-hidden="true"></div>
+<section class="a-hero"><div class="a-hero__inner">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog.html">Blog</a> / CPHQ Patient Safety Guide</nav>
+<span class="a-tag">Domain deep dive</span><h1>CPHQ Patient Safety Guide: RCA, FMEA, Just Culture and High Reliability</h1><p class="a-dek">Patient Safety is 18 CPHQ items. Master root cause analysis, FMEA, Just Culture and high reliability with scenarios and an RPN calculator.</p>
+<div class="a-meta"><span>By the CPHQ Qbank team</span><span>10 min read</span><span>Updated September 2026</span></div>
+<div class="a-facts"><div><b>18</b><small>scored items</small></div><div><b>14.4%</b><small>of the scored exam</small></div><div><b>5</b><small>HRO principles</small></div><div><b>3</b><small>Just Culture behaviors</small></div></div></div></section>
+<div class="a-layout">
+<aside class="toc" aria-label="On this page"><p class="toc__title">On this page</p><ol data-toc></ol>
+<div class="toc__cta"><p>Test yourself on every CPHQ category with 50 free questions.</p><a class="btn btn--primary btn--sm" href="https://cphq-healthcare-quality.base44.app">Try free</a></div></aside>
+<main><details class="toc-mobile"><summary>On this page</summary><ol data-toc></ol></details>
+<article class="prose"><p class="lead">Patient Safety accounts for 18 scored items, and its ideas also show up in Quality Review and Leadership questions. The exam's point of view is consistent: harm usually comes from systems, not bad people, and the best fixes change the system.</p>
+
+<h2 id="systems" data-toc="Systems thinking">How errors reach patients</h2>
+<p>James Reason's Swiss cheese model pictures each safeguard as a slice with holes: latent conditions like understaffing, confusing equipment or unclear policies. Harm happens when holes line up and a hazard passes through every layer.</p>
+<svg viewBox="0 0 640 220" role="img" aria-label="Swiss cheese model: a hazard arrow passes through aligned holes in four layers of defense and reaches the patient" style="width:100%;background:var(--tint);border-radius:14px">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b42318"/></marker></defs>
+  <g font-family="Open Sans" font-size="12" fill="rgba(15,35,65,1)" text-anchor="middle">
+    <g transform="translate(140 0)"><path d="M0 30 q14 -6 28 0 v150 q-14 6 -28 0z" fill="#f6d67a" stroke="#d9a520"/><ellipse cx="14" cy="60" rx="6" ry="9" fill="#e8f0fb"/><ellipse cx="14" cy="112" rx="7" ry="11" fill="#e8f0fb"/><ellipse cx="14" cy="155" rx="5" ry="7" fill="#e8f0fb"/><text x="14" y="205">Policies</text></g>
+    <g transform="translate(250 0)"><path d="M0 30 q14 -6 28 0 v150 q-14 6 -28 0z" fill="#f6d67a" stroke="#d9a520"/><ellipse cx="14" cy="50" rx="5" ry="8" fill="#e8f0fb"/><ellipse cx="14" cy="112" rx="7" ry="11" fill="#e8f0fb"/><ellipse cx="14" cy="165" rx="6" ry="8" fill="#e8f0fb"/><text x="14" y="205">Technology</text></g>
+    <g transform="translate(360 0)"><path d="M0 30 q14 -6 28 0 v150 q-14 6 -28 0z" fill="#f6d67a" stroke="#d9a520"/><ellipse cx="14" cy="75" rx="6" ry="8" fill="#e8f0fb"/><ellipse cx="14" cy="112" rx="7" ry="11" fill="#e8f0fb"/><text x="14" y="205">Staffing</text></g>
+    <g transform="translate(470 0)"><path d="M0 30 q14 -6 28 0 v150 q-14 6 -28 0z" fill="#f6d67a" stroke="#d9a520"/><ellipse cx="14" cy="112" rx="7" ry="11" fill="#e8f0fb"/><ellipse cx="14" cy="150" rx="5" ry="8" fill="#e8f0fb"/><text x="14" y="205">Final check</text></g>
+    <text x="60" y="100" font-weight="700" fill="#b42318">Hazard</text>
+    <text x="590" y="100" font-weight="700" fill="#b42318">Harm</text>
+  </g>
+  <line x1="40" y1="112" x2="600" y2="112" stroke="#b42318" stroke-width="3" marker-end="url(#ah)"/>
+</svg>
+<p>The lesson for the exam: when an event happens, ask which layers failed and why, not just who made the last mistake.</p>
+
+<h2 id="hro" data-toc="High reliability">High reliability principles</h2>
+<p>High reliability organizations operate in hazardous conditions with very few accidents. Weick and Sutcliffe describe five principles. Tap each for what it looks like in a hospital.</p>
+<div class="tiles">
+  <button class="tile" type="button"><span class="tile__k">1</span><span class="tile__t">Preoccupation with failure</span><span class="tile__d">Near misses are reported and studied as warnings, not dismissed as luck.</span></button>
+  <button class="tile" type="button"><span class="tile__k">2</span><span class="tile__t">Reluctance to simplify</span><span class="tile__d">Teams dig past easy explanations like "human error" to find deeper causes.</span></button>
+  <button class="tile" type="button"><span class="tile__k">3</span><span class="tile__t">Sensitivity to operations</span><span class="tile__d">Leaders know what's happening on the front line through safety huddles and rounding.</span></button>
+  <button class="tile" type="button"><span class="tile__k">4</span><span class="tile__t">Commitment to resilience</span><span class="tile__d">Staff are trained to detect, contain and recover from errors quickly.</span></button>
+  <button class="tile" type="button"><span class="tile__k">5</span><span class="tile__t">Deference to expertise</span><span class="tile__d">Decisions go to the person with the most knowledge, regardless of rank.</span></button>
+</div>
+<p class="src">These five are listed in the order Weick and Sutcliffe present them; the numbers are for reference, not priority.</p>
+
+<h2 id="just-culture" data-toc="Just Culture">Just Culture</h2>
+<p>A Just Culture balances learning with accountability. The response depends on the <strong>behavior</strong>, never on the outcome.</p>
+<div class="table-wrap"><table>
+<tr><th>Behavior</th><th>What it is</th><th>Response</th></tr>
+<tr><td><strong>Human error</strong></td><td>An inadvertent slip, lapse or mistake</td><td>Console; fix the system</td></tr>
+<tr><td><strong>At-risk behavior</strong></td><td>A choice where risk isn't recognized or is believed justified; often a normalized shortcut</td><td>Coach; remove incentives for the shortcut</td></tr>
+<tr><td><strong>Reckless behavior</strong></td><td>Conscious disregard of a substantial, unjustifiable risk</td><td>Remedial or disciplinary action</td></tr>
+</table></div>
+<div class="tool">
+  <div class="tool__head"><b>Classify the behavior</b><span id="jscore">0 of 5</span></div>
+  <div class="tool__body" id="jc"></div>
+</div>
+
+<div class="cta-inline"><div><h3>Practice with 500+ CPHQ questions</h3><p>Scenario-based, mapped to the NAHQ content outline, with an explanation for every answer. Your first 50 are free.</p></div><a class="btn btn--light" href="https://cphq-healthcare-quality.base44.app">Start free questions</a></div>
+
+<h2 id="rca-fmea" data-toc="RCA vs. FMEA">RCA vs. FMEA</h2>
+<div class="table-wrap"><table>
+<tr><th></th><th>Root cause analysis</th><th>Failure mode and effects analysis</th></tr>
+<tr><td><strong>Timing</strong></td><td>Retrospective, after an event</td><td>Prospective, before harm occurs</td></tr>
+<tr><td><strong>Trigger</strong></td><td>Sentinel or serious safety event, or a cluster of events</td><td>New or changed high-risk process</td></tr>
+<tr><td><strong>Core question</strong></td><td>Why did this happen?</td><td>What could go wrong, and how bad would it be?</td></tr>
+<tr><td><strong>Output</strong></td><td>Causal statements and an action plan</td><td>Prioritized failure modes and redesign</td></tr>
+</table></div>
+
+<h3>Strong actions beat weak ones</h3>
+<p>The RCA<sup>2</sup> guidance from the National Patient Safety Foundation ranks corrective actions by how reliably they prevent recurrence. Exam answers favor the strongest feasible option.</p>
+<div class="bars">
+  <div class="bar"><span><strong>Stronger</strong><br><span class="muted">forcing functions, standardized equipment, simplified processes, architectural changes</span></span><div class="bar__track"><div class="bar__fill bar__fill--hi" style="--w:95%"></div></div><span class="bar__v">High</span></div>
+  <div class="bar"><span><strong>Intermediate</strong><br><span class="muted">checklists, redundancy, decreased workload, software enhancements</span></span><div class="bar__track"><div class="bar__fill" style="--w:60%"></div></div><span class="bar__v">Med</span></div>
+  <div class="bar"><span><strong>Weaker</strong><br><span class="muted">double checks, warnings, new policies, training</span></span><div class="bar__track"><div class="bar__fill" style="--w:25%;background:#7ea6dc"></div></div><span class="bar__v">Low</span></div>
+</div>
+
+<h3>FMEA risk priority number</h3>
+<p>Each failure mode is scored for severity, likelihood of occurrence and likelihood of <em>escaping</em> detection, usually 1 to 10 each. Multiply for the RPN (maximum 1,000). Try a failure mode from a new infusion pump process:</p>
+<div class="tool">
+  <div class="tool__head"><b>RPN calculator</b><span>Severity × Occurrence × Detection</span></div>
+  <div class="tool__body">
+    <p class="muted">Failure mode: nurse selects the wrong drug from the pump library.</p>
+    <div class="grid3">
+      <div class="field"><label for="sv">Severity: <span id="svv">9</span></label><input id="sv" type="range" min="1" max="10" value="9"></div>
+      <div class="field"><label for="oc">Occurrence: <span id="ocv">4</span></label><input id="oc" type="range" min="1" max="10" value="4"></div>
+      <div class="field"><label for="de">Detection: <span id="dev">6</span></label><input id="de" type="range" min="1" max="10" value="6"></div>
+    </div>
+    <p class="muted">For detection, 10 means the failure is almost impossible to catch before it reaches the patient. Action thresholds below are illustrative; organizations set their own.</p>
+    <div class="out"><div class="out__big" id="rpn">216</div><div class="meter" style="margin:8px 0"><i id="rpnm"></i></div><p id="rpnt"></p></div>
+  </div>
+</div>
+<p class="src">Some organizations use a hazard scoring matrix (severity × probability) instead, such as the VA's Healthcare FMEA. The priority logic is the same.</p>
+
+<h2 id="events" data-toc="Event review">Sentinel events and reporting</h2>
+<p>The Joint Commission defines a <strong>sentinel event</strong> as a patient safety event, not primarily related to the natural course of the illness, that results in death, permanent harm or severe temporary harm. These call for immediate investigation and a comprehensive systematic analysis, such as an RCA, with an action plan.</p>
+<ul>
+<li><strong>Near misses</strong> never reach the patient, yet they're the cheapest lessons. A strong reporting culture captures them.</li>
+<li><strong>Safety culture</strong> is often measured with AHRQ's Surveys on Patient Safety Culture (SOPS).</li>
+<li><strong>Confidentiality</strong> of safety work products, including through Patient Safety Organizations, encourages open reporting.</li>
+</ul>
+
+<h2 id="teamwork" data-toc="Teamwork & human factors">Teamwork and human factors</h2>
+<p>Human factors engineering designs systems around how people actually think and work: standardizing, simplifying, using forcing functions and reducing reliance on memory. Teamwork tools from TeamSTEPPS appear often on the exam:</p>
+<div class="table-wrap"><table>
+<tr><th>Tool</th><th>Purpose</th></tr>
+<tr><td>SBAR</td><td>Structured communication: Situation, Background, Assessment, Recommendation</td></tr>
+<tr><td>Briefs, huddles, debriefs</td><td>Plan, adjust and learn as a team</td></tr>
+<tr><td>Check-back / closed loop</td><td>Confirms a message was received and understood</td></tr>
+<tr><td>CUS words</td><td>"I'm Concerned, I'm Uncomfortable, this is a Safety issue" to escalate</td></tr>
+<tr><td>Two-challenge rule</td><td>Voice a concern at least twice to ensure it's heard</td></tr>
+</table></div>
+
+<div class="pq" data-answer="b"><div class="pq__top"><span>Practice question</span><span class="pq__dom">Patient Safety</span></div><p class="pq__stem">After a wrong-site surgery, an RCA team finds the surgical site was marked inconsistently across operating rooms. Which corrective action is strongest?</p><div class="pq__opts"><button class="pq__opt" data-k="a"><b>A</b><span>Re-educate all surgeons on the site marking policy</span></button><button class="pq__opt" data-k="b"><b>B</b><span>Build a hard stop so the case cannot start in the surgical system until site marking is verified</span></button><button class="pq__opt" data-k="c"><b>C</b><span>Post reminder signs in every operating room</span></button><button class="pq__opt" data-k="d"><b>D</b><span>Revise the site marking policy and have staff sign it</span></button></div><div class="pq__exp" aria-live="polite"><p class="pq__verdict"></p><p>A hard stop is a forcing function, one of the strongest actions because it doesn't depend on memory or vigilance. Education, signs and policy revisions are weaker actions that rely on people remembering to comply.</p></div></div>
+
+<div class="pq" data-answer="a"><div class="pq__top"><span>Practice question</span><span class="pq__dom">Patient Safety</span></div><p class="pq__stem">A hospital's incident reports dropped 40% after a new manager began publicly naming staff involved in errors. What is the most likely explanation?</p><div class="pq__opts"><button class="pq__opt" data-k="a"><b>A</b><span>Staff are reporting less because the culture feels punitive</span></button><button class="pq__opt" data-k="b"><b>B</b><span>Patient safety has improved significantly</span></button><button class="pq__opt" data-k="c"><b>C</b><span>The reporting system has a technical problem</span></button><button class="pq__opt" data-k="d"><b>D</b><span>Staff have become more skilled since the change</span></button></div><div class="pq__exp" aria-live="polite"><p class="pq__verdict"></p><p>A sudden drop in reports after a punitive change usually signals fear, not safety. Healthy safety cultures often see reporting increase, especially near misses. The fix is to restore a non-punitive, Just Culture approach.</p></div></div>
+
+
+<h2 id="faq" data-toc="FAQ">Frequently asked questions</h2><div class="faq"><div class="faq-item"><button class="faq-q"><span>What is the difference between RCA and FMEA?</span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>Root cause analysis is retrospective: it examines an event that already happened. FMEA is prospective: it looks for ways a process could fail before harm occurs.</p></div></div><div class="faq-item"><button class="faq-q"><span>How is an RPN calculated in FMEA?</span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>Risk priority number = severity x occurrence x detection, each usually scored 1 to 10, for a maximum of 1,000. Higher numbers get attention first, though high severity alone should also trigger action.</p></div></div><div class="faq-item"><button class="faq-q"><span>What are the three behaviors in Just Culture?</span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>Human error (console the person), at-risk behavior (coach the person) and reckless behavior (consider sanction). The response depends on the behavior, not the outcome.</p></div></div><div class="faq-item"><button class="faq-q"><span>What is a sentinel event?</span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="faq-a"><p>The Joint Commission defines it as a patient safety event, not primarily related to the natural course of the illness, that results in death, permanent harm or severe temporary harm.</p></div></div></div>
+<p class="src">Figures are from NAHQ's 2024 CPHQ Detailed Content Outline (Revision 2b) and 2024 Domestic Candidate Handbook unless noted. Fees and policies change; the current handbook on nahq.org is the controlling source.</p>
+</article></main></div>
+<section class="related"><h2>Keep studying</h2><div class="rel-grid"><a class="rel" href="/blog-cphq-quality-improvement-tools.html"><small>Domain deep dive</small><h3>CPHQ Quality Improvement Tools: PDSA, Lean, Six Sigma and When to Use Each</h3></a><a class="rel" href="/blog-cphq-health-data-analytics.html"><small>Domain deep dive</small><h3>CPHQ Health Data Analytics: Control Charts, Statistics and Measures Made Simple</h3></a><a class="rel" href="/blog-cphq-practice-questions.html"><small>Practice questions</small><h3>12 Free CPHQ Practice Questions with Explanations</h3></a></div></section>
+<section class="cta-section"><h2>Ready to practice?</h2><p>500+ scenario-based questions covering every CPHQ content category. Start with 50 free, no credit card required.</p><a class="btn btn--primary" href="https://cphq-healthcare-quality.base44.app">Start 50 Free Questions</a></section>
+<footer class="footer">&copy; 2026 CPHQ Qbank &bull; <a href="/">Home</a> &bull; <a href="/blog.html">Blog</a> &bull; <a href="/Privacy_Policy.html">Privacy</a> &bull; <a href="/Terms_of_Service.html">Terms</a> &bull; <a href="mailto:support@cphqquestionbank.com">Contact</a>
+<p style="margin-top:8px">CPHQ is a registered certification of the National Association for Healthcare Quality (NAHQ). CPHQ Qbank is independent and not affiliated with or endorsed by NAHQ or HQCC.</p></footer><script>(function(){
+  var hb=document.getElementById('hamburger'),dr=document.getElementById('mobileDrawer'),ov=document.getElementById('drawerOverlay');
+  function o(){hb.classList.add('open');dr.classList.add('open');ov.classList.add('open');document.body.style.overflow='hidden'}
+  function c(){hb.classList.remove('open');dr.classList.remove('open');ov.classList.remove('open');document.body.style.overflow=''}
+  if(hb){hb.addEventListener('click',function(){dr.classList.contains('open')?c():o()});ov.addEventListener('click',c);dr.querySelectorAll('a').forEach(function(a){a.addEventListener('click',c)})}
+
+  // reading progress
+  var pb=document.getElementById('progress'),art=document.querySelector('.prose');
+  function prog(){if(!pb||!art)return;var r=art.getBoundingClientRect(),h=art.offsetHeight-window.innerHeight*.6;var p=Math.min(1,Math.max(0,-r.top/h));pb.style.width=(p*100)+'%'}
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // table of contents
+  var hs=[].slice.call(document.querySelectorAll('.prose h2[id]'));
+  var lists=document.querySelectorAll('ol[data-toc]');
+  lists.forEach(function(ol){hs.forEach(function(h){var li=document.createElement('li'),a=document.createElement('a');a.href='#'+h.id;a.textContent=h.dataset.toc||h.textContent;li.appendChild(a);ol.appendChild(li)})});
+  var links=document.querySelectorAll('.toc a');
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-20% 0px -70% 0px'});hs.forEach(function(h){io.observe(h)})}
+
+  // faq
+  document.querySelectorAll('.faq-q').forEach(function(b){b.setAttribute('aria-expanded','false');b.addEventListener('click',function(){var a=b.nextElementSibling,op=b.getAttribute('aria-expanded')==='true';document.querySelectorAll('.faq-q').forEach(function(x){x.setAttribute('aria-expanded','false');x.nextElementSibling.style.maxHeight=null});if(!op){b.setAttribute('aria-expanded','true');a.style.maxHeight=a.scrollHeight+'px'}})});
+
+  // practice questions
+  var score={right:0,done:0};
+  document.querySelectorAll('.pq').forEach(function(q){
+    var ans=q.dataset.answer;
+    q.querySelectorAll('.pq__opt').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        if(q.classList.contains('answered'))return;
+        q.classList.add('answered');
+        var ok=btn.dataset.k===ans;
+        q.querySelectorAll('.pq__opt').forEach(function(b){b.disabled=true;if(b.dataset.k===ans)b.classList.add('is-right')});
+        if(!ok)btn.classList.add('is-wrong');
+        var v=q.querySelector('.pq__verdict');if(v){v.textContent=ok?'Correct.':'Not quite. The best answer is '+ans.toUpperCase()+'.';v.style.color=ok?'var(--ok)':'var(--bad)'}
+        score.done++;if(ok)score.right++;
+        document.dispatchEvent(new CustomEvent('pq:answer',{detail:score}));
+      });
+    });
+  });
+
+  // tiles
+  document.querySelectorAll('.tile').forEach(function(t){t.setAttribute('aria-expanded','false');t.addEventListener('click',function(){var on=t.classList.toggle('on');t.setAttribute('aria-expanded',on)})});
+
+  // checklists
+  document.querySelectorAll('[data-checklist]').forEach(function(box){
+    var key='cl:'+box.dataset.checklist,inputs=box.querySelectorAll('input[type=checkbox]'),m=box.querySelector('.meter i'),lab=box.querySelector('[data-count]');
+    var saved={};try{saved=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+    inputs.forEach(function(i,n){i.checked=!!saved[n];i.addEventListener('change',upd)});
+    function upd(){var d=0,s={};inputs.forEach(function(i,n){if(i.checked){d++;s[n]=1}});if(m)m.style.width=(d/inputs.length*100)+'%';if(lab)lab.textContent=d+' of '+inputs.length+' done';try{localStorage.setItem(key,JSON.stringify(s))}catch(e){}}
+    upd();
+  });
+
+  // segmented buttons
+  document.querySelectorAll('.seg').forEach(function(s){s.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){s.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');s.dispatchEvent(new CustomEvent('seg:change',{detail:b.dataset.v}))})})});
+})();
+</script><script>
+(function(){
+var S=[["A pharmacist grabs a look-alike vial from an adjacent bin during a busy shift and doesn't notice.","h"],
+["A nurse routinely skips the second identifier check because \"everyone does\" and the unit is short-staffed.","a"],
+["A technician turns off a critical alarm for a full shift because the noise is annoying, knowing patients could be harmed.","r"],
+["A resident transposes two digits when entering a dose, despite following the ordering process.","h"],
+["A surgeon consistently skips the time-out to stay on schedule, believing it's unnecessary for routine cases.","a"]];
+var L={h:"Human error: console",a:"At-risk behavior: coach",r:"Reckless behavior: consider sanction"},right=0,done=0,box=document.getElementById('jc');
+S.forEach(function(s){var d=document.createElement('div');d.style.cssText='border-bottom:1px solid var(--line);padding-bottom:12px';d.innerHTML='<p style="font-weight:600;margin-bottom:8px">'+s[0]+'</p><div class="seg"><button type="button" data-v="h">Human error</button><button type="button" data-v="a">At-risk</button><button type="button" data-v="r">Reckless</button></div><p class="muted" style="margin-top:6px" hidden></p>';box.appendChild(d);
+ var bs=d.querySelectorAll('button'),fb=d.querySelector('p.muted');
+ bs.forEach(function(b){b.onclick=function(){if(d.dataset.done)return;d.dataset.done=1;done++;var ok=b.dataset.v===s[1];if(ok)right++;
+  bs.forEach(function(x){x.disabled=true;if(x.dataset.v===s[1]){x.style.background='var(--ok)';x.style.borderColor='var(--ok)';x.style.color='#fff'}});
+  if(!ok){b.style.background='var(--bad)';b.style.borderColor='var(--bad)';b.style.color='#fff'}
+  fb.hidden=false;fb.textContent=(ok?'Correct. ':'Not quite. ')+L[s[1]]+'.';document.getElementById('jscore').textContent=right+' correct of '+done}})});
+function r(){var s=+document.getElementById('sv').value,o=+document.getElementById('oc').value,d=+document.getElementById('de').value,n=s*o*d;
+ document.getElementById('svv').textContent=s;document.getElementById('ocv').textContent=o;document.getElementById('dev').textContent=d;
+ document.getElementById('rpn').textContent=n;var m=document.getElementById('rpnm');m.style.width=(n/10)+'%';
+ var t,c;if(s>=9){t='Severity is catastrophic, so act on this failure mode regardless of the overall RPN.';c='var(--bad)'}else if(n>=200){t='High priority. Redesign the process with a strong action, then re-score.';c='var(--bad)'}else if(n>=100){t='Moderate priority. Plan an intermediate or strong action.';c='#d97706'}else{t='Lower priority. Monitor and address as resources allow.';c='var(--ok)'}
+ m.style.background=c;document.getElementById('rpnt').textContent=t}
+['sv','oc','de'].forEach(function(id){document.getElementById(id).oninput=r});r();
+})();
+</script>
+</body></html>
